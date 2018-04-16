@@ -78,14 +78,19 @@ void SetInitialStack(int i){
 // Outputs: 1 if successful, 0 if this thread can not be added
 int OS_AddThreads(void(*task0)(void),
                  void(*task1)(void),
-                 void(*task2)(void)){ int32_t status;
+                 void(*task2)(void))
+{
+  int32_t status;
   status = StartCritical();
   tcbs[0].next = &tcbs[1]; // 0 points to 1
   tcbs[1].next = &tcbs[2]; // 1 points to 2
   tcbs[2].next = &tcbs[0]; // 2 points to 0
-  SetInitialStack(0); Stacks[0][STACKSIZE-2] = (int32_t)(task0); // PC
-  SetInitialStack(1); Stacks[1][STACKSIZE-2] = (int32_t)(task1); // PC
-  SetInitialStack(2); Stacks[2][STACKSIZE-2] = (int32_t)(task2); // PC
+  SetInitialStack(0);
+  Stacks[0][STACKSIZE-2] = (int32_t)(task0); // PC
+  SetInitialStack(1);
+  Stacks[1][STACKSIZE-2] = (int32_t)(task1); // PC
+  SetInitialStack(2);
+  Stacks[2][STACKSIZE-2] = (int32_t)(task2); // PC
   RunPt = &tcbs[0];       // thread 0 will run first
   EndCritical(status);
   return 1;               // successful
