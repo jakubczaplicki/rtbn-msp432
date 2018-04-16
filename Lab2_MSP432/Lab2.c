@@ -66,7 +66,7 @@ enum plotstate
   Temperature
 };
 enum plotstate PlotState = Accelerometer;
-//color constants
+//colour constants
 #define BGCOLOR     LCD_BLACK
 #define AXISCOLOR   LCD_ORANGE
 #define MAGCOLOR    LCD_YELLOW
@@ -461,7 +461,7 @@ int main(void)
   OS_InitSemaphore(&NewData, 0);  // 0 means no data
   OS_InitSemaphore(&LCDmutex, 1); // 1 means free
   OS_MailBox_Init();              // initialise mailbox used to send data between Task1 and Task2
-  // Task 0 should run every 1ms and Task 1 should run  every 100ms
+  // Task 0 should run every 1ms and Task 1 should run every 100ms
   OS_AddPeriodicEventThreads(&Task0, 1, &Task1, 100);
   // Task2, Task3, Task4, Task5 are main threads
   OS_AddThreads(&Task2, &Task3, &Task4, &Task5);
@@ -480,7 +480,8 @@ int main_step1(void)
 {
   OS_InitSemaphore(&s1,0);
   OS_InitSemaphore(&s2,1);
-  while(1){
+  while(1)
+  {
     OS_Wait(&s2); //now s1=0, s2=0
     OS_Signal(&s1); //now s1=1, s2=0
     OS_Signal(&s2); //now s1=1, s2=1
@@ -575,7 +576,7 @@ int main_step5(void){
 
   // Task1 will not run
   // Task5 will stall
-  // Task 0 should run every 1ms and dummy is not run
+  // Task 0 should run every 1ms and dummy every 100 ms
   OS_AddPeriodicEventThreads(&Task0, 1, &Dummy, 100);
   // Task2, Task3, Task4, Task5 are main threads
   OS_AddThreads(&Task2, &Task3, &Task4, &Task5);

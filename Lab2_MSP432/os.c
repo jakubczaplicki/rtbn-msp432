@@ -23,10 +23,10 @@ uint32_t Lost;
 
 //task 5
 uint32_t Counter;
-void (*PeriodUserTask1)(void); // pointer to 1st periodic thread
-uint32_t PeriodUserPeriod1;
-void (*PeriodUserTask2)(void); // pointer to 2nd periodic thread
-uint32_t PeriodUserPeriod2;
+void (*PeriodicTask1)(void); // pointer to 1st periodic thread
+uint32_t PeriodicTask1Period;
+void (*PeriodicTask2)(void); // pointer to 2nd periodic thread
+uint32_t PeriodicTask2Period;
 
 // ******** OS_Init ************
 // Initialise operating system, disable interrupts
@@ -44,8 +44,8 @@ void OS_Init(void)
   Ack = 0; // semaphore
   Lost = 0;
   Counter = 0;
-  PeriodUserPeriod1 = 0;
-  PeriodUserPeriod2 = 0;
+  PeriodicTask1Period = 0;
+  PeriodicTask2Period = 0;
 }
 
 void SetInitialStack(int i)
@@ -150,10 +150,10 @@ int OS_AddPeriodicEventThreads(void(*thread1)(void),
                                uint32_t period2)
 {
   // TODO ***YOU IMPLEMENT THIS FUNCTION*****
-  PeriodUserTask1 = thread1;
-  PeriodUserPeriod1 = period1;
-  PeriodUserTask2 = thread2;
-  PeriodUserPeriod2 = period2;
+  PeriodicTask1 = thread1;
+  PeriodicTask1Period = period1;
+  PeriodicTask2 = thread2;
+  PeriodicTask2Period = period2;
   return 1;
 }
 
@@ -179,16 +179,16 @@ void Scheduler(void)
   // implement round robin scheduler, update RunPt
   //***YOU IMPLEMENT THIS FUNCTION*****
   static int32_t Counter = 0;
-  Counter = (Counter + 1)%(PeriodUserPeriod1 * PeriodUserPeriod2);
+  Counter = (Counter + 1)%(PeriodicTask1Period * PeriodicTask2Period);
 
   // run any periodic event threads if needed
-  if ((Counter % PeriodUserPeriod1) == 0)
+  if ((Counter % PeriodicTask1Period) == 0)
   {
-      (*PeriodUserTask1)(); //Run periodic thread, every PerThread0_Period ms
+      (*PeriodicTask1)(); //Run periodic thread, every PerThread0_Period ms
   }
-  if ((Counter % PeriodUserPeriod2) == 0)
+  if ((Counter % PeriodicTask2Period) == 0)
   {
-      (*PeriodUserTask2)(); //Run periodic thread1, every PerThread1_Period ms
+      (*PeriodicTask2)(); //Run periodic thread1, every PerThread1_Period ms
   }
 
   //implement round robin scheduler, update RunPt
