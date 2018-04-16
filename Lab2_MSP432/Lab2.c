@@ -36,15 +36,15 @@
 #include <stdint.h>
 #include "../inc/BSP.h"
 #include "../inc/Profile.h"
-#include "Texas.h"
+// #include "Texas.h"
 #include "../inc/CortexM.h"
 #include "os.h"
 
 uint32_t sqrt32(uint32_t s);
-#define THREADFREQ 1000   // frequency in Hz of round robin scheduler
+#define THREADFREQ 1000  // frequency in Hz of round robin scheduler
 
 //---------------- Global variables shared between tasks ----------------
-uint32_t Time;              // elasped time in 100 ms units
+uint32_t Time;              // elapsed time in 100 ms units
 uint32_t Steps;             // number of steps counted
 uint32_t Magnitude;         // will not overflow (3*1,023^2 = 3,139,587)
                             // Exponentially Weighted Moving Average
@@ -59,7 +59,8 @@ int32_t NewData;  // true when new numbers to display on top of LCD
 int32_t LCDmutex; // exclusive access to LCD
 int ReDrawAxes = 0;         // non-zero means redraw axes on next display task
 
-enum plotstate{
+enum plotstate
+{
   Accelerometer,
   Microphone,
   Temperature
@@ -81,34 +82,38 @@ enum plotstate PlotState = Accelerometer;
 #define SOUNDRMSLENGTH 1000 // number of samples to collect before calculating RMS (may overflow if greater than 4104)
 int16_t SoundArray[SOUNDRMSLENGTH];
 // *********Task0_Init*********
-// initializes microphone
+// initialises microphone
 // Task0 measures sound intensity
 // Inputs:  none
 // Outputs: none
-void Task0_Init(void){
+void Task0_Init(void)
+{
   BSP_Microphone_Init();
 }
+
 // *********Task0*********
 // Periodic event thread runs in real time at 1000 Hz
 // collects data from microphone
 // Inputs:  none
 // Outputs: none
-void Task0(void){long sr;
+void Task0(void)
+{
+  long sr;
   static int32_t soundSum = 0;
-  static int time = 0; // units of microphone sampling rate
-
-  TExaS_Task0();     // record system time in array, toggle virtual logic analyzer
-  Profile_Toggle0(); // viewed by a real logic analyzer to know Task0 started
+  static int time = 0;  // units of microphone sampling rate
+  //TExaS_Task0();      // record system time in array, toggle virtual logic analyser
+  //Profile_Toggle0();  // viewed by a real logic analyser to know Task0 started
   sr = StartCritical(); // on MSP432, the ADC input is a critical section
   BSP_Microphone_Input(&SoundData);
   EndCritical(sr);
   soundSum = soundSum + (int32_t)SoundData;
   SoundArray[time] = SoundData;
   time = time + 1;
-  if(time == SOUNDRMSLENGTH){
+  if(time == SOUNDRMSLENGTH)
+  {
     SoundAvg = soundSum/SOUNDRMSLENGTH;
     soundSum = 0;
-    OS_Signal(&NewData); // makes task5 run every 1 sec
+    OS_Signal(&NewData);  // makes task5 run every 1 sec
     time = 0;
   }
 }
@@ -120,26 +125,30 @@ void Task0(void){long sr;
 // Event thread run by OS in real time at 10 Hz
 uint16_t AccX, AccY, AccZ;  // returned by BSP as 10-bit numbers
 // *********Task1_Init*********
-// initializes accelerometer
+// initialises accelerometer
 // Task1 counts Steps
 // Inputs:  none
 // Outputs: none
-void Task1_Init(void){
+void Task1_Init(void)
+{
   BSP_Accelerometer_Init();
-  // initialize the exponential weighted moving average filter
+  // initialise the exponential weighted moving average filter
   BSP_Accelerometer_Input(&AccX, &AccY, &AccZ);
   Magnitude = sqrt32(AccX*AccX + AccY*AccY + AccZ*AccZ);
-  EWMA = Magnitude;     // this is a guess; there are many options
+  EWMA = Magnitude;  // this is a guess; there are many options
   Steps = 0;
 }
+
 // *********Task1*********
 // collects data from accelerometer
 // counts Steps
 // Inputs:  none
 // Outputs: none
-void Task1(void){long sr; uint32_t squared;
-  TExaS_Task1();     // records system time in array, toggles virtual logic analyzer
-  Profile_Toggle1(); // viewed by a real logic analyzer to know Task1 started
+void Task1(void)
+{
+  long sr; uint32_t squared;
+  //TExaS_Task1();     // records system time in array, toggles virtual logic analyser
+  //Profile_Toggle1(); // viewed by a real logic analyser to know Task1 started
   sr = StartCritical(); // on MSP432, the ADC input is a critical section
   BSP_Accelerometer_Input(&AccX, &AccY, &AccZ);
   EndCritical(sr);
@@ -156,7 +165,8 @@ void Task1(void){long sr; uint32_t squared;
 // Main thread scheduled by OS round robin preemptive scheduler
 // accepts data from accelerometer, calculates steps, plots on LCD, and output to LED
 // If no data are lost, the main loop in Task2 runs exactly at 10 Hz, but not in real time
-enum state{                 // the step counting algorithm cycles through four states
+enum state                 // the step counting algorithm cycles through four states
+{
   LookingForMax,            // looking for a local maximum in current magnitude
   LookingForCross1,         // looking for current magnitude to cross average magnitude, minus a constant
   LookingForMin,            // looking for a local minimum in current magnitude
@@ -176,18 +186,29 @@ enum state AlgorithmState = LookingForMax;
 #define LIGHT_MIN 0
 #define TEMP_MAX 1023
 #define TEMP_MIN 0
-void drawaxes(void){
+
+void drawaxes(void)
+{
   OS_Wait(&LCDmutex);
-  if(PlotState == Accelerometer){
+  if(PlotState == Accelerometer)
+  {
     BSP_LCD_Drawaxes(AXISCOLOR, BGCOLOR, "Time", "Mag", MAGCOLOR, "Ave", EWMACOLOR, ACCELERATION_MAX, ACCELERATION_MIN);
-  } else if(PlotState == Microphone){
+  }
+  else if(PlotState == Microphone)
+  {
     BSP_LCD_Drawaxes(AXISCOLOR, BGCOLOR, "Time", "Sound", SOUNDCOLOR, "", 0, SoundData+100, SoundData-100);
-  } else if(PlotState == Temperature){
+  }
+  else if(PlotState == Temperature)
+  {
     BSP_LCD_Drawaxes(AXISCOLOR, BGCOLOR, "Time", "Temp", TEMPCOLOR, "", 0, TEMP_MAX, TEMP_MIN);
   }
-  OS_Signal(&LCDmutex);  ReDrawAxes = 0;
+  OS_Signal(&LCDmutex);
+  ReDrawAxes = 0;
 }
-void Task2(void){uint32_t data;
+
+void Task2(void)
+{
+  uint32_t data;
   uint32_t localMin;   // smallest measured magnitude since odd-numbered step detected
   uint32_t localMax;   // largest measured magnitude since even-numbered step detected
   uint32_t localCount; // number of measured magnitudes above local min or below local max
@@ -197,74 +218,95 @@ void Task2(void){uint32_t data;
   drawaxes();
   while(1){
     data = OS_MailBox_Recv();  // acceleration data from Task 1
-    TExaS_Task2();     // records system time in array, toggles virtual logic analyzer
-    Profile_Toggle2(); // viewed by a real logic analyzer to know Task2 started
+    // TExaS_Task2();      // records system time in array, toggles virtual logic analyser
+    // Profile_Toggle2();  // viewed by a real logic analyser to know Task2 started
     Magnitude = sqrt32(data);
     EWMA = (ALPHA*Magnitude + (1023 - ALPHA)*EWMA)/1024;
-    if(AlgorithmState == LookingForMax){
-      if(Magnitude > localMax){
+    if(AlgorithmState == LookingForMax)
+    {
+      if(Magnitude > localMax)
+      {
         localMax = Magnitude;
         localCount = 0;
-      } else{
+      }
+      else
+      {
         localCount = localCount + 1;
-        if(localCount >= LOCALCOUNTTARGET){
+        if(localCount >= LOCALCOUNTTARGET)
+        {
           AlgorithmState = LookingForCross1;
         }
       }
-    } else if(AlgorithmState == LookingForCross1){
-      if(Magnitude > localMax){
-      // somehow measured a very large magnitude
+    }
+    else if(AlgorithmState == LookingForCross1)
+    {
+      if(Magnitude > localMax)  // somehow measured a very large magnitude
+      {
         localMax = Magnitude;
         localCount = 0;
         AlgorithmState = LookingForMax;
-      } else if(Magnitude < (EWMA -  AVGOVERSHOOT)){
-        // step detected
+      }
+      else if(Magnitude < (EWMA -  AVGOVERSHOOT))  // step detected
+      {
         Steps = Steps + 1;
         localMin = 1024;
         localCount = 0;
         AlgorithmState = LookingForMin;
       }
-    } else if(AlgorithmState == LookingForMin){
-      if(Magnitude < localMin){
+    } else if(AlgorithmState == LookingForMin)
+    {
+      if(Magnitude < localMin)
+      {
         localMin = Magnitude;
         localCount = 0;
-      } else{
+      }
+      else
+      {
         localCount = localCount + 1;
-        if(localCount >= LOCALCOUNTTARGET){
+        if(localCount >= LOCALCOUNTTARGET)
+        {
           AlgorithmState = LookingForCross2;
         }
       }
-    } else if(AlgorithmState == LookingForCross2){
-      if(Magnitude < localMin){
-      // somehow measured a very small magnitude
+    } else if(AlgorithmState == LookingForCross2)
+    {
+      if(Magnitude < localMin)  // somehow measured a very small magnitude
+      {
         localMin = Magnitude;
         localCount = 0;
         AlgorithmState = LookingForMin;
-      } else if(Magnitude > (EWMA + AVGOVERSHOOT)){
-        // step detected
+      }
+      else if(Magnitude > (EWMA + AVGOVERSHOOT))  // step detected
+      {
         Steps = Steps + 1;
         localMax = 0;
         localCount = 0;
         AlgorithmState = LookingForMax;
       }
     }
-    if(ReDrawAxes){
+    if(ReDrawAxes)
+    {
       drawaxes();
       ReDrawAxes = 0;
     }
     OS_Wait(&LCDmutex);
-    if(PlotState == Accelerometer){
+    if(PlotState == Accelerometer)
+    {
       BSP_LCD_PlotPoint(Magnitude, MAGCOLOR);
       BSP_LCD_PlotPoint(EWMA, EWMACOLOR);
-    } else if(PlotState == Microphone){
+    }
+    else if(PlotState == Microphone)
+    {
       BSP_LCD_PlotPoint(SoundData, SOUNDCOLOR);
-    } else if(PlotState == Temperature){
+    }
+    else if(PlotState == Temperature)
+    {
       BSP_LCD_PlotPoint(TemperatureData, TEMPCOLOR);
     }
     BSP_LCD_PlotIncrement();
     OS_Signal(&LCDmutex);
-    // update the LED
-    switch(AlgorithmState){
+    switch(AlgorithmState)  // update the LED
+    {
       case LookingForMax: BSP_RGB_Set(500, 0, 0); break;
       case LookingForCross1: BSP_RGB_Set(350, 350, 0); break;
       case LookingForMin: BSP_RGB_Set(0, 500, 0); break;
@@ -276,7 +318,6 @@ void Task2(void){uint32_t data;
 /* ****************************************** */
 /*          End of Task2 Section              */
 /* ****************************************** */
-
 
 //------------Task3 handles switch input, buzzer output, LED output-------
 // *********Task3*********
@@ -293,39 +334,46 @@ void Task3(void){
   BSP_Buzzer_Init(0);
   BSP_RGB_Init(0, 0, 0);
   while(1){
-    TExaS_Task3();     // records system time in array, toggles virtual logic analyzer
-    Profile_Toggle3(); // viewed by a real logic analyzer to know Task3 started
+    // TExaS_Task3();     // records system time in array, toggles virtual logic analyser
+    // Profile_Toggle3(); // viewed by a real logic analyser to know Task3 started
     BSP_Buzzer_Set(0);
     current = BSP_Button1_Input();
-    if((current == 0) && (prev1 != 0)){
+    if((current == 0) && (prev1 != 0))
+    {
       // Button1 was pressed since last loop
-      if(PlotState == Accelerometer){
+      if(PlotState == Accelerometer)
+      {
         PlotState = Microphone;
-      } else if(PlotState == Microphone){
+      } else if(PlotState == Microphone)
+      {
         PlotState = Temperature;
-      } else if(PlotState == Temperature){
+      } else if(PlotState == Temperature)
+      {
         PlotState = Accelerometer;
       }
-      ReDrawAxes = 1;                // redraw axes on next call of display task
-      BSP_Buzzer_Set(512);           // beep until next call of this task
+      ReDrawAxes = 1;       // redraw axes on next call of display task
+      BSP_Buzzer_Set(512);  // beep until next call of this task
     }
     prev1 = current;
     current = BSP_Button2_Input();
-    if((current == 0) && (prev2 != 0)){
+    if((current == 0) && (prev2 != 0))
+    {
       // Button2 was pressed since last loop
-      if(PlotState == Accelerometer){
+      if(PlotState == Accelerometer)
+      {
         PlotState = Temperature;
-      } else if(PlotState == Microphone){
+      } else if(PlotState == Microphone)
+      {
         PlotState = Accelerometer;
-      } else if(PlotState == Temperature){
+      } else if(PlotState == Temperature)
+      {
         PlotState = Microphone;
       }
-      ReDrawAxes = 1;                // redraw axes on next call of display task
-      BSP_Buzzer_Set(512);           // beep until next call of this task
+      ReDrawAxes = 1;       // redraw axes on next call of display task
+      BSP_Buzzer_Set(512);  // beep until next call of this task
     }
     prev2 = current;
-
-    BSP_Delay1ms(5); // very inefficient, but does debounce the switches
+    BSP_Delay1ms(5); // very inefficient, but does denounce the switches
   }
 }
 /* ****************************************** */
@@ -342,13 +390,15 @@ void Task3(void){
 void Task4(void){int32_t voltData,tempData;
   int done;
   BSP_TempSensor_Init();
-  while(1){
-    TExaS_Task4();     // records system time in array, toggles virtual logic analyzer
-    Profile_Toggle4(); // viewed by a real logic analyzer to know Task4 started
+  while(1)
+  {
+    // TExaS_Task4();     // records system time in array, toggles virtual logic analyser
+    // Profile_Toggle4(); // viewed by a real logic analyser to know Task4 started
     BSP_TempSensor_Start();
     done = 0;
-    while(done == 0){
-      done = BSP_TempSensor_End(&voltData,&tempData); // waits about 1 sec
+    while(done == 0)
+    {
+      done = BSP_TempSensor_End(&voltData,&tempData);  // waits about 1 sec
     }
     TemperatureData = tempData/10000;
   }
@@ -376,20 +426,22 @@ void Task5(void){int32_t soundSum;
   BSP_LCD_DrawString(10, 0, "Temp =", TOPTXTCOLOR);
   BSP_LCD_DrawString(10, 1, "Sound=", TOPTXTCOLOR);
   OS_Signal(&LCDmutex);
-  while(1){
+  while(1)
+  {
     OS_Wait(&NewData);
-    TExaS_Task5();     // records system time in array, toggles virtual logic analyzer
-    Profile_Toggle5(); // viewed by a real logic analyzer to know Task5 started
+    // TExaS_Task5();     // records system time in array, toggles virtual logic analyser
+    // Profile_Toggle5(); // viewed by a real logic analyser to know Task5 started
     soundSum = 0;
-    for(int i=0; i<SOUNDRMSLENGTH; i=i+1){
+    for(int i=0; i<SOUNDRMSLENGTH; i=i+1)
+    {
       soundSum = soundSum + (SoundArray[i] - SoundAvg)*(SoundArray[i] - SoundAvg);
     }
     soundRMS = sqrt32(soundSum/SOUNDRMSLENGTH);
     OS_Wait(&LCDmutex);
-    BSP_LCD_SetCursor(5,  0); BSP_LCD_OutUDec4(Time/10,       TOPNUMCOLOR);
-    BSP_LCD_SetCursor(5,  1); BSP_LCD_OutUDec4(Steps,         MAGCOLOR);
+    BSP_LCD_SetCursor(5,  0); BSP_LCD_OutUDec4(Time/10, TOPNUMCOLOR);
+    BSP_LCD_SetCursor(5,  1); BSP_LCD_OutUDec4(Steps, MAGCOLOR);
     BSP_LCD_SetCursor(16, 0); BSP_LCD_OutUFix2_1(TemperatureData, TEMPCOLOR);
-    BSP_LCD_SetCursor(16, 1); BSP_LCD_OutUDec4(soundRMS,      SOUNDCOLOR);
+    BSP_LCD_SetCursor(16, 1); BSP_LCD_OutUDec4(soundRMS, SOUNDCOLOR);
     OS_Signal(&LCDmutex);
   }
 }
@@ -397,9 +449,10 @@ void Task5(void){int32_t soundSum;
 /*          End of Task5 Section              */
 /* ****************************************** */
 
-int main(void){
+int main_(void)
+{
   OS_Init();
-  Profile_Init();  // initialize the 7 hardware profiling pins
+  Profile_Init();  // initialise the 7 hardware profiling pins
   Task0_Init();    // microphone init
   Task1_Init();    // accelerometer init
   BSP_LCD_Init();
@@ -407,23 +460,24 @@ int main(void){
   Time = 0;
   OS_InitSemaphore(&NewData, 0);  // 0 means no data
   OS_InitSemaphore(&LCDmutex, 1); // 1 means free
-  OS_MailBox_Init();              // initialize mailbox used to send data between Task1 and Task2
+  OS_MailBox_Init();              // initialise mailbox used to send data between Task1 and Task2
   // Task 0 should run every 1ms and Task 1 should run  every 100ms
   OS_AddPeriodicEventThreads(&Task0, 1, &Task1, 100);
   // Task2, Task3, Task4, Task5 are main threads
   OS_AddThreads(&Task2, &Task3, &Task4, &Task5);
   // when grading change 1000 to 4-digit number from edX
-  TExaS_Init(GRADER, 1000 );          // initialize the Lab 2 grader
-//  TExaS_Init(LOGICANALYZER, 1000); // initialize the Lab 2 logic analyzer
+  // TExaS_Init(GRADER, 1000 );        // initialise the Lab 2 grader
+  // TExaS_Init(LOGICANALYZER, 1000); // initialise the Lab 2 logic analyser
   OS_Launch(BSP_Clock_GetFreq()/THREADFREQ); // doesn't return, interrupts enabled in here
-  return 0;             // this never executes
+  return 0;  // this never executes
 }
 
 
 //******************Step 1**************************
 // implement and test the semaphores
 int32_t s1,s2;
-int main_step1(void){
+int main_step1(void)
+{
   OS_InitSemaphore(&s1,0);
   OS_InitSemaphore(&s2,1);
   while(1){
@@ -435,18 +489,22 @@ int main_step1(void){
     OS_Wait(&s1); //now s1=0, s2=1
   }
 } 
+
 //***************Step 2*************************
 // Implement the three mailbox functions as defined in OS.c and OS.h
 // Use this a simple main program to test the mailbox functions.
 uint32_t Out;
-int main_step2(void){ uint32_t in=0;
+int main_step2(void)
+{
+  uint32_t in=0;
   OS_MailBox_Init();
   while(1){
     OS_MailBox_Send(in);
     Out = OS_MailBox_Recv();
     in++;
   }
-} 
+}
+
 //***************Step 3*************************
 // Test the round robin scheduler
 // The minimal set of functions you need to write to get the system running is
@@ -455,30 +513,32 @@ int main_step2(void){ uint32_t in=0;
 //  OS_Init
 //  OS_AddThreads3 (with just 3 threads for now)
 //  OS_Launch
-int main_step3(void){
+int main(void){
   OS_Init();
-  Profile_Init();  // initialize the 7 hardware profiling pins
+  Profile_Init();  // initialise the 7 hardware profiling pins
   Task0_Init();    // microphone init
   Task1_Init();    // accelerometer init
   BSP_LCD_Init();
   BSP_LCD_FillScreen(BSP_LCD_Color565(0, 0, 0));
   Time = 0;
-// semaphores and mailbox not used
-// Tasks 0, 1, 2 will not run
-// Task3, Task4, Task5 are main threads
-// Task2 will stall
+  // semaphores and mailbox not used
+  // Tasks 0, 1, 2 will not run
+  // Task3, Task4, Task5 are main threads
+  // Task2 will stall
   OS_AddThreads3(&Task3, &Task4, &Task5);
   // when grading change 1000 to 4-digit number from edX
-  TExaS_Init(GRADER, 1000);          // initialize the Lab 2 grader
-//  TExaS_Init(LOGICANALYZER, 1000); // initialize the Lab 2 logic analyzer
+  // TExaS_Init(GRADER, 1000);         // initialise the Lab 2 grader
+  // TExaS_Init(LOGICANALYZER, 1000); // initialise the Lab 2 logic analyser
   OS_Launch(BSP_Clock_GetFreq()/THREADFREQ); // doesn't return, interrupts enabled in here
-  return 0;             // this never executes
+  return 0;  // this never executes
 }
+
 //***************Step 4*************************
 // Increase to 4 threads
-int main_step4(void){
+int main_step4(void)
+{
   OS_Init();
-  Profile_Init();  // initialize the 7 hardware profiling pins
+  Profile_Init();  // initialise the 7 hardware profiling pins
   Task0_Init();    // microphone init
   Task1_Init();    // accelerometer init
   BSP_LCD_Init();
@@ -486,16 +546,16 @@ int main_step4(void){
   Time = 0;
   OS_InitSemaphore(&NewData, 0);  // 0 means no data
   OS_InitSemaphore(&LCDmutex, 1); // 1 means free
-  OS_MailBox_Init();              // initialize mailbox used to send data between Task1 and Task2
-// Tasks 0, 1 will not run
-// Task2, Task3, Task4, Task5 are main threads
-// Tasks 2 and 5 will stall
+  OS_MailBox_Init();              // initialise mailbox used to send data between Task1 and Task2
+  // Tasks 0, 1 will not run
+  // Task2, Task3, Task4, Task5 are main threads
+  // Tasks 2 and 5 will stall
   OS_AddThreads(&Task2, &Task3, &Task4, &Task5);
   // when grading change 1000 to 4-digit number from edX
-  TExaS_Init(GRADER, 1000);          // initialize the Lab 2 grader
-//  TExaS_Init(LOGICANALYZER, 1000); // initialize the Lab 2 logic analyzer
-  OS_Launch(BSP_Clock_GetFreq()/THREADFREQ); // doesn't return, interrupts enabled in here
-  return 0;             // this never executes
+  // TExaS_Init(GRADER, 1000);        // initialise the Lab 2 grader
+  // TExaS_Init(LOGICANALYZER, 1000); // initialise the Lab 2 logic analyser
+  OS_Launch(BSP_Clock_GetFreq()/THREADFREQ);  // doesn't return, interrupts enabled in here
+  return 0;  // this never executes
 }
 
 //***************Step 5*************************
@@ -503,7 +563,7 @@ int main_step4(void){
 void Dummy(void){}; // place holder
 int main_step5(void){
   OS_Init();
-  Profile_Init();  // initialize the 7 hardware profiling pins
+  Profile_Init();  // initialise the 7 hardware profiling pins
   Task0_Init();    // microphone init
   Task1_Init();    // accelerometer init
   BSP_LCD_Init();
@@ -511,29 +571,31 @@ int main_step5(void){
   Time = 0;
   OS_InitSemaphore(&NewData, 0);  // 0 means no data
   OS_InitSemaphore(&LCDmutex, 1); // 1 means free
-  OS_MailBox_Init();              // initialize mailbox used to send data between Task1 and Task2
+  OS_MailBox_Init();              // initialise mailbox used to send data between Task1 and Task2
 
-// Task1 will not run
-// Task5 will stall
+  // Task1 will not run
+  // Task5 will stall
   // Task 0 should run every 1ms and dummy is not run
   OS_AddPeriodicEventThreads(&Task0, 1, &Dummy, 100);
   // Task2, Task3, Task4, Task5 are main threads
   OS_AddThreads(&Task2, &Task3, &Task4, &Task5);
   // when grading change 1000 to 4-digit number from edX
-  TExaS_Init(GRADER, 1000);          // initialize the Lab 2 grader
-//  TExaS_Init(LOGICANALYZER, 1000); // initialize the Lab 2 logic analyzer
-  OS_Launch(BSP_Clock_GetFreq()/THREADFREQ); // doesn't return, interrupts enabled in here
-  return 0;             // this never executes
+  // TExaS_Init(GRADER, 1000);         // initialise the Lab 2 grader
+  // TExaS_Init(LOGICANALYZER, 1000);  // initialise the Lab 2 logic analyser
+  OS_Launch(BSP_Clock_GetFreq()/THREADFREQ);  // doesn't return, interrupts enabled in here
+  return 0;  // this never executes
 }
 
 // Newton's method
 // s is an integer
 // sqrt(s) is an integer
-uint32_t sqrt32(uint32_t s){
-uint32_t t;   // t*t will become s
-int n;             // loop counter
-  t = s/16+1;      // initial guess
-  for(n = 16; n; --n){ // will finish
+uint32_t sqrt32(uint32_t s)
+{
+  uint32_t t;          // t*t will become s
+  int n;               // loop counter
+  t = s/16+1;          // initial guess
+  for(n = 16; n; --n)  // will finish
+  {
     t = ((t*t+s)/t)/2;
   }
   return t;

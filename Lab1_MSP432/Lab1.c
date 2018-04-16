@@ -107,13 +107,14 @@ uint32_t SoundRMS;          // Root Mean Square average of most recent sound sam
 uint32_t LightData;
 int ReDrawAxes = 0;         // non-zero means redraw axes on next display task
 
-enum plotstate{
+enum plotstate
+{
   Accelerometer,
   Microphone,
   Light
 };
 enum plotstate PlotState = Accelerometer;
-//color constants
+//colour constants
 #define BGCOLOR     LCD_BLACK
 #define AXISCOLOR   LCD_ORANGE
 #define MAGCOLOR    LCD_YELLOW
@@ -125,25 +126,28 @@ enum plotstate PlotState = Accelerometer;
 //------------ end of Global variables shared between tasks -------------
 
 //---------------- Task0 samples sound from microphone ----------------
-//#define SOUNDRMSLENGTH 10   // number of samples to collect before calculating RMS (may overflow if greater than 4104)
-#define SOUNDRMSLENGTH 1000 // number of samples to collect before calculating RMS (may overflow if greater than 4104)
+//#define SOUNDRMSLENGTH 10  // number of samples to collect before calculating RMS (may overflow if greater than 4104)
+#define SOUNDRMSLENGTH 1000  // number of samples to collect before calculating RMS (may overflow if greater than 4104)
 int16_t SoundArray[SOUNDRMSLENGTH];
 // *********Task0_Init*********
-// initializes microphone
+// initialises microphone
 // Task0 measures sound intensity
 // Inputs:  none
 // Outputs: none
-void Task0_Init(void){
+void Task0_Init(void)
+{
   BSP_Microphone_Init();
   SoundRMS = 0;
 }
+
 // *********Task0*********
 // collects data from microphone
 // Inputs:  none
 // Outputs: none
-void Task0(void){
+void Task0(void)
+{
   static int32_t soundSum = 0;
-  static int time = 0;// units of microphone sampling rate
+  static int time = 0;  // units of microphone sampling rate
   int32_t soundAvg;
   int i;
   //TExaS_Task0();     // record system time in array, toggle virtual logic analyzer
@@ -152,11 +156,13 @@ void Task0(void){
   soundSum = soundSum + (int32_t)SoundData;
   SoundArray[time] = SoundData;
   time = time + 1;
-  if(time == SOUNDRMSLENGTH){
+  if(time == SOUNDRMSLENGTH)
+  {
     time = 0;
     soundAvg = soundSum/SOUNDRMSLENGTH;
     soundSum = 0;
-    for(i=0; i<SOUNDRMSLENGTH; i=i+1){
+    for(i=0; i<SOUNDRMSLENGTH; i=i+1)
+    {
       soundSum = soundSum + (SoundArray[i] - soundAvg)*(SoundArray[i] - soundAvg);
     }
     SoundRMS = sqrt32(soundSum/SOUNDRMSLENGTH);
@@ -172,7 +178,8 @@ uint16_t AccX, AccY, AccZ;  // returned by BSP as 10-bit numbers
 #define ALPHA 128           // The degree of weighting decrease, a constant smoothing factor between 0 and 1,023. A higher ALPHA discounts older observations faster.
                             // basic step counting algorithm is based on a forum post from
                             // http://stackoverflow.com/questions/16392142/android-accelerometer-profiling/16539643#16539643
-enum state{                 // the step counting algorithm cycles through four states
+enum state
+{                           // the step counting algorithm cycles through four states
   LookingForMax,            // looking for a local maximum in current magnitude
   LookingForCross1,         // looking for current magnitude to cross average magnitude, minus a constant
   LookingForMin,            // looking for a local minimum in current magnitude
@@ -185,71 +192,88 @@ uint32_t LocalCount = 0;    // number of measured magnitudes above local min or 
 #define LOCALCOUNTTARGET 5  // The number of valid measured magnitudes needed to confirm a local min or local max.  Increase this number for longer strides or more frequent measurements.
 #define AVGOVERSHOOT 25     // The amount above or below average a measurement must be to count as "crossing" the average.  Increase this number to reject increasingly hard shaking as steps.
 // *********Task1_Init*********
-// initializes accelerometer
+// initialises accelerometer
 // Task1 counts Steps
 // Inputs:  none
 // Outputs: none
 void Task1_Init(void){
   BSP_Accelerometer_Init();
-  // initialize the exponential weighted moving average filter
+  // initialise the exponential weighted moving average filter
   BSP_Accelerometer_Input(&AccX, &AccY, &AccZ);
   Magnitude = sqrt32(AccX*AccX + AccY*AccY + AccZ*AccZ);
-  EWMA = Magnitude;                // this is a guess; there are many options
+  EWMA = Magnitude;  // this is a guess; there are many options
   Steps = 0;
 }
+
 // *********Task1*********
 // collects data from accelerometer
 // counts Steps
 // Inputs:  none
 // Outputs: none
-void Task1(void){
-  //TExaS_Task1();     // record system time in array, toggle virtual logic analyzer
-  //Profile_Toggle1(); // viewed by the logic analyzer to know Task1 started
-
+void Task1(void)
+{
+  //TExaS_Task1();     // record system time in array, toggle virtual logic analyser
+  //Profile_Toggle1(); // viewed by the logic analyser to know Task1 started
   BSP_Accelerometer_Input(&AccX, &AccY, &AccZ);
   Magnitude = sqrt32(AccX*AccX + AccY*AccY + AccZ*AccZ);
   EWMA = (ALPHA*Magnitude + (1023 - ALPHA)*EWMA)/1024;
 
-  if(AlgorithmState == LookingForMax){
-    if(Magnitude > LocalMax){
+  if(AlgorithmState == LookingForMax)
+  {
+    if(Magnitude > LocalMax)
+    {
       LocalMax = Magnitude;
       LocalCount = 0;
-    } else{
+    }
+    else
+    {
       LocalCount = LocalCount + 1;
-      if(LocalCount >= LOCALCOUNTTARGET){
+      if(LocalCount >= LOCALCOUNTTARGET)
+      {
         AlgorithmState = LookingForCross1;
       }
     }
-  } else if(AlgorithmState == LookingForCross1){
-    if(Magnitude > LocalMax){
-      // somehow measured a very large magnitude
+  }
+  else if(AlgorithmState == LookingForCross1)
+  {
+    if(Magnitude > LocalMax)  // somehow measured a very large magnitude
+    {
       LocalMax = Magnitude;
       LocalCount = 0;
       AlgorithmState = LookingForMax;
-    } else if(Magnitude < (EWMA -  AVGOVERSHOOT)){
-      // step detected
+    }
+    else if(Magnitude < (EWMA -  AVGOVERSHOOT))  // step detected
+    {
       Steps = Steps + 1;
       LocalMin = 1024;
       LocalCount = 0;
       AlgorithmState = LookingForMin;
     }
-  } else if(AlgorithmState == LookingForMin){
+  }
+  else if(AlgorithmState == LookingForMin)
+  {
     if(Magnitude < LocalMin){
       LocalMin = Magnitude;
       LocalCount = 0;
     } else{
       LocalCount = LocalCount + 1;
-      if(LocalCount >= LOCALCOUNTTARGET){
+      if(LocalCount >= LOCALCOUNTTARGET)
+      {
         AlgorithmState = LookingForCross2;
       }
     }
-  } else if(AlgorithmState == LookingForCross2){
-    if(Magnitude < LocalMin){
+  }
+  else if(AlgorithmState == LookingForCross2)
+  {
+    if(Magnitude < LocalMin)
+    {
       // somehow measured a very small magnitude
       LocalMin = Magnitude;
       LocalCount = 0;
       AlgorithmState = LookingForMin;
-    } else if(Magnitude > (EWMA + AVGOVERSHOOT)){
+    }
+    else if(Magnitude > (EWMA + AVGOVERSHOOT))
+    {
       // step detected
       Steps = Steps + 1;
       LocalMax = 0;
@@ -262,33 +286,33 @@ void Task1(void){
 /*          End of Task1 Section              */
 /* ****************************************** */
 
-
 //---------------- Task2 measures light ----------------
 uint32_t Task2Failures;  // number of times Light wasn't ready
 // *********Task2_Init*********
-// initializes light sensor
+// initialises light sensor
 // Task2 measures light intensity
 // Inputs:  none
 // Outputs: none
-void Task2_Init(void){
+void Task2_Init(void)
+{
   Task2Failures = 0;
   BSP_LightSensor_Init();
   LightData = BSP_LightSensor_Input();
   BSP_LightSensor_Start();
 }
+
 // *********Task2*********
 // collects data from light sensor
 // Inputs:  none
 // Outputs: none
 // must be called less than once a second
 void Task2(void){
-  //TExaS_Task2();     // record system time in array, toggle virtual logic analyzer
-  //Profile_Toggle2(); // viewed by the logic analyzer to know Task2 started
-
+  //TExaS_Task2();      // record system time in array, toggle virtual logic analyser
+  //Profile_Toggle2();  // viewed by the logic analyser to know Task2 started
   if(BSP_LightSensor_End(&LightData)==0){
-    Task2Failures++;      // should have been ready
+    Task2Failures++;    // should have been ready
   }
-  BSP_LightSensor_Start(); // start measurement for next time
+  BSP_LightSensor_Start();  // start measurement for next time
 }
 /* ****************************************** */
 /*          End of Task2 Section              */
@@ -296,27 +320,29 @@ void Task2(void){
 
 //------------Task3 handles switch input, buzzer output, LED output-------
 // *********Task3_Init*********
-// initializes switches, buzzer, and LEDs
+// initialises switches, buzzer, and LEDs
 // Task3 checks the switches, updates the mode, and outputs to the buzzer and LED
 // Inputs:  none
 // Outputs: none
-void Task3_Init(void){
+void Task3_Init(void)
+{
   BSP_Button1_Init();
   BSP_Button2_Init();
   BSP_Buzzer_Init(0);
   BSP_RGB_Init(0, 0, 0);
 }
+
 // *********Task3*********
 // non-real-time task
 // checks the switches, updates the mode, and outputs to the buzzer and LED
 // Inputs:  none
 // Outputs: none
-void Task3(void){
+void Task3(void)
+{
   static uint8_t prev1 = 0, prev2 = 0;
   uint8_t current;
-  //TExaS_Task3();     // record system time in array, toggle virtual logic analyzer
-  //Profile_Toggle3(); // viewed by the logic analyzer to know Task3 started
-
+  //TExaS_Task3();     // record system time in array, toggle virtual logic analyser
+  //Profile_Toggle3(); // viewed by the logic analyser to know Task3 started
   BSP_Buzzer_Set(0);
   current = BSP_Button1_Input();
   if((current == 0) && (prev1 != 0)){
@@ -328,26 +354,30 @@ void Task3(void){
     } else if(PlotState == Light){
       PlotState = Accelerometer;
     }
-    ReDrawAxes = 1;                // redraw axes on next call of display task
-    BSP_Buzzer_Set(512);           // beep until next call of this task
+    ReDrawAxes = 1;       // redraw axes on next call of display task
+    BSP_Buzzer_Set(512);  // beep until next call of this task
   }
   prev1 = current;
   current = BSP_Button2_Input();
-  if((current == 0) && (prev2 != 0)){
-    // Button2 was pressed since last loop
-    if(PlotState == Accelerometer){
+  if((current == 0) && (prev2 != 0))  // Button2 was pressed since last loop
+  {
+    if(PlotState == Accelerometer)
+    {
       PlotState = Light;
-    } else if(PlotState == Microphone){
+    } else if(PlotState == Microphone)
+    {
       PlotState = Accelerometer;
-    } else if(PlotState == Light){
+    } else if(PlotState == Light)
+    {
       PlotState = Microphone;
     }
-    ReDrawAxes = 1;                // redraw axes on next call of display task
-    BSP_Buzzer_Set(512);           // beep until next call of this task
+    ReDrawAxes = 1;       // redraw axes on next call of display task
+    BSP_Buzzer_Set(512);  // beep until next call of this task
   }
   prev2 = current;
-  // update the LED
-  switch(AlgorithmState){
+
+  switch(AlgorithmState)  // update the LED
+  {
     case LookingForMax: BSP_RGB_Set(500, 0, 0); break;
     case LookingForCross1: BSP_RGB_Set(350, 350, 0); break;
     case LookingForMin: BSP_RGB_Set(0, 500, 0); break;
@@ -367,12 +397,16 @@ void Task3(void){
 #define SOUND_MIN 300
 #define LIGHT_MAX 200000
 #define LIGHT_MIN 0
-void drawaxes(void){
-  if(PlotState == Accelerometer){
+void drawaxes(void)
+{
+  if(PlotState == Accelerometer)
+  {
     BSP_LCD_Drawaxes(AXISCOLOR, BGCOLOR, "Time", "Mag", MAGCOLOR, "Ave", EWMACOLOR, ACCELERATION_MAX, ACCELERATION_MIN);
-  } else if(PlotState == Microphone){
+  } else if(PlotState == Microphone)
+  {
     BSP_LCD_Drawaxes(AXISCOLOR, BGCOLOR, "Time", "Sound", SOUNDCOLOR, "", 0, SoundData+100, SoundData-100);
-  } else if(PlotState == Light){
+  } else if(PlotState == Light)
+  {
     BSP_LCD_Drawaxes(AXISCOLOR, BGCOLOR, "Time", "Light", LIGHTCOLOR, "", 0, LIGHT_MAX, LIGHT_MIN);
   }
 }
@@ -392,24 +426,25 @@ int numlength(uint32_t n){
 }
 
 // *********Task4_Init*********
-// initializes LCD
+// initialises LCD
 // Task4 updates the plot and Task5 updates the text at the top of the plot
 // Inputs:  none
 // Outputs: none
-void Task4_Init(void){
+void Task4_Init(void)
+{
   BSP_LCD_Init();
   BSP_LCD_FillScreen(BSP_LCD_Color565(0, 0, 0));
   drawaxes();
   ReDrawAxes = 0;
 }
+
 // *********Task4*********
 // updates the plot
 // Inputs:  none
 // Outputs: none
 void Task4(void){
-  //TExaS_Task4();     // record system time in array, toggle virtual logic analyzer
-  //Profile_Toggle4(); // viewed by the logic analyzer to know Task4 started
-
+  //TExaS_Task4();     // record system time in array, toggle virtual logic analyser
+  //Profile_Toggle4(); // viewed by the logic analyser to know Task4 started
   if(ReDrawAxes){
     ReDrawAxes = 0;
     drawaxes();
@@ -433,11 +468,12 @@ void Task4(void){
 //------- Task5 displays text on LCD -----------
 /* ------------------------------------------ */
 // *********Task5_Init*********
-// initializes LCD
+// initialises LCD
 // Task5 updates the text at the top of the plot
 // Inputs:  none
 // Outputs: none
-void Task5_Init(void){
+void Task5_Init(void)
+{
   // assumes BSP_LCD_Init(); has been called
   BSP_LCD_DrawString(0, 0,  "Time=",  TOPTXTCOLOR);
   BSP_LCD_DrawString(0, 1,  "Step=",  TOPTXTCOLOR);
@@ -449,10 +485,10 @@ void Task5_Init(void){
 // updates the text at the top of the LCD
 // Inputs:  none
 // Outputs: none
-void Task5(void){
-  //TExaS_Task5();     // record system time in array, toggle virtual logic analyzer
-  //Profile_Toggle5(); // viewed by the logic analyzer to know Task5 started
-
+void Task5(void)
+{
+  //TExaS_Task5();     // record system time in array, toggle virtual logic analyser
+  //Profile_Toggle5(); // viewed by the logic analyser to know Task5 started
   BSP_LCD_SetCursor(5,  0); BSP_LCD_OutUDec4(Time,          TOPNUMCOLOR);
   BSP_LCD_SetCursor(5,  1); BSP_LCD_OutUDec4(Steps,         MAGCOLOR);
   BSP_LCD_SetCursor(16, 0); BSP_LCD_OutUDec4(LightData/100, LIGHTCOLOR);
@@ -462,24 +498,28 @@ void Task5(void){
 /*          End of Task5 Section              */
 /* ****************************************** */
 
-int main(void){
+int main(void)
+{
   DisableInterrupts();
   BSP_Clock_InitFastest();
-  //Profile_Init();               // initialize the 7 hardware profiling pins
-  // change 1000 to 4-digit number from edX
-  //TExaS_Init(GRADER,1161);      // Initialise the Lab 1 grader
-  //TExaS_Init(LOGICANALYZER,1000);   // initialise the Lab 1 logic analyser
-  Task0_Init();    // microphone init
-  Task1_Init();    // accelerometer init
-  Task2_Init();    // light init
-  Task3_Init();    // buttons init
-  Task4_Init();    // LCD graphics init
-  Task5_Init();    // LCD text init
+  Profile_Init();                  // initialise the 7 hardware profiling pins
+                                     // change 1000 to 4-digit number from edX
+  //TExaS_Init(GRADER,1161);         // Initialise the Lab 1 grader
+  //TExaS_Init(LOGICANALYZER,1000);  // initialise the Lab 1 logic analyser
+  Task0_Init();  // microphone init
+  Task1_Init();  // accelerometer init
+  Task2_Init();  // light init
+  Task3_Init();  // buttons init
+  Task4_Init();  // LCD graphics init
+  Task5_Init();  // LCD text init
   Time = 0;
-  EnableInterrupts(); // interrupts needed for grader to run
-  while(1){
-      for(int i=0; i<10; i++){ // runs at about 10 Hz
-          for(int j=0; j<100; j++){ // runs at about 1000 Hz
+  EnableInterrupts();  // interrupts needed for grader to run
+  while(1)
+  {
+      for(int i=0; i<10; i++)  // runs at about 10 Hz
+      {
+          for(int j=0; j<100; j++)  // runs at about 1000 Hz
+          {
               Task0();  // sample microphone
               BSP_Delay1ms(1);
           }
@@ -489,9 +529,9 @@ int main(void){
           Task4();  // update the plot
           // BSP_Delay1ms(100);
           }
-    Task2();   // sample light at 1 Hz
-    Task5();   // update the LCD text at 1 Hz
-    Time++;    // 1 Hz
+    Task2(); // sample light at 1 Hz
+    Task5(); // update the LCD text at 1 Hz
+    Time++;  // 1 Hz
     //Profile_Toggle6();
   }
 }
@@ -499,11 +539,13 @@ int main(void){
 // Newton's method
 // s is an integer
 // sqrt(s) is an integer
-uint32_t sqrt32(uint32_t s){
-uint32_t t;   // t*t will become s
-int n;             // loop counter
-  t = s/16+1;      // initial guess
-  for(n = 16; n; --n){ // will finish
+uint32_t sqrt32(uint32_t s)
+{
+  uint32_t t;          // t*t will become s
+  int n;               // loop counter
+  t = s/16+1;          // initial guess
+  for(n = 16; n; --n)  // will finish
+  {
     t = ((t*t+s)/t)/2;
   }
   return t;

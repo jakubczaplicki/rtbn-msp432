@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Lab1_MSP432</name>
+	<name>Lab2_MSP432</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -26,6 +26,16 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>BSP.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-ORIGINAL_PROJECT_ROOT/inc/BSP.c</locationURI>
+		</link>
+		<link>
+			<name>CortexM.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-ORIGINAL_PROJECT_ROOT/inc/CortexM.c</locationURI>
+		</link>
+		<link>
 			<name>Profile.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-ORIGINAL_PROJECT_ROOT/inc/Profile.c</locationURI>
@@ -34,7 +44,7 @@
 	<variableList>
 		<variable>
 			<name>ORIGINAL_PROJECT_ROOT</name>
-			<value>file:/Users/jakubczaplicki/Development/rtbn/MSP432ValvanoWare/Lab1_MSP432</value>
+			<value>file:/Users/jakubczaplicki/Development/rtbn/MSP432ValvanoWare/Lab2_MSP432</value>
 		</variable>
 	</variableList>
 </projectDescription>
