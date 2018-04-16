@@ -36,28 +36,21 @@ uint32_t PeriodUserPeriod2;
 // Outputs: none
 void OS_Init(void)
 {
-  int i, j;
   DisableInterrupts();
   BSP_Clock_InitFastest();// set processor clock to fastest speed
   // initialise any global variables as needed
-  //***YOU IMPLEMENT THIS FUNCTION*****
+  // TODO ***YOU IMPLEMENT THIS FUNCTION*****
   Send = 0; // semaphore
   Ack = 0; // semaphore
   Lost = 0;
   Counter = 0;
   PeriodUserPeriod1 = 0;
   PeriodUserPeriod2 = 0;
-
-  for (i = 0; i < NUMTHREADS; i++) {
-      for (j = 0; j < STACKSIZE; j++) {
-          Stacks[i][j] = 0;
-      }
-  }
 }
 
 void SetInitialStack(int i)
 {
-  //***YOU IMPLEMENT THIS FUNCTION*****
+  // TODO ***YOU IMPLEMENT THIS FUNCTION*****
   tcbs[i].sp = &Stacks[i][STACKSIZE-16]; // thread stack pointer
   Stacks[i][STACKSIZE-1] = 0x01000000;   // thumb bit
   Stacks[i][STACKSIZE-3] = 0x14141414;   // R14
@@ -89,13 +82,16 @@ int OS_AddThreads(void(*thread0)(void),
   // initialise TCB circular list
   // initialise RunPt
   // initialise four stacks, including initial PC
-  //***YOU IMPLEMENT THIS FUNCTION*****
+  // TODO ***YOU IMPLEMENT THIS FUNCTION*****
   int32_t status;
-  status = StartCritical();
+  status = StartCritical();  //Disable Interrupts
   tcbs[0].next = &tcbs[1];  // 0 points to 1
   tcbs[1].next = &tcbs[2];  // 1 points to 2
   tcbs[2].next = &tcbs[3];  // 2 points to 3
   tcbs[3].next = &tcbs[0];  // 3 points to 0
+
+  RunPt = &tcbs[0];  // thread 0 will run first
+
   SetInitialStack(0);
   Stacks[0][STACKSIZE-2] = (int32_t)(thread0);  // PC
   SetInitialStack(1);
@@ -104,7 +100,7 @@ int OS_AddThreads(void(*thread0)(void),
   Stacks[2][STACKSIZE-2] = (int32_t)(thread2);  // PC
   SetInitialStack(3);
   Stacks[3][STACKSIZE-2] = (int32_t)(thread3);  // PC
-  RunPt = &tcbs[0];  // thread 0 will run first
+
   EndCritical(status);
   return 1;  // successful
 }
@@ -121,7 +117,7 @@ int OS_AddThreads3(void(*task0)(void),
   // initialise TCB circular list (same as RTOS project)
   // initialise RunPt
   // initialise four stacks, including initial PC
-  //***YOU IMPLEMENT THIS FUNCTION*****
+  // TODO ***YOU IMPLEMENT THIS FUNCTION*****
   int32_t status;
   status = StartCritical();
   tcbs[0].next = &tcbs[1];  // 0 points to 1
@@ -153,7 +149,7 @@ int OS_AddPeriodicEventThreads(void(*thread1)(void),
                                void(*thread2)(void),
                                uint32_t period2)
 {
-  //***YOU IMPLEMENT THIS FUNCTION*****
+  // TODO ***YOU IMPLEMENT THIS FUNCTION*****
   PeriodUserTask1 = thread1;
   PeriodUserPeriod1 = period1;
   PeriodUserTask2 = thread2;
@@ -182,6 +178,23 @@ void Scheduler(void)
   // run any periodic event threads if needed
   // implement round robin scheduler, update RunPt
   //***YOU IMPLEMENT THIS FUNCTION*****
+  static int32_t Counter = 0;
+  Counter = (Counter + 1)%(PeriodUserPeriod1 * PeriodUserPeriod2);
+
+  // run any periodic event threads if needed
+  if ((Counter % PeriodUserPeriod1) == 0)
+  {
+      (*PeriodUserTask1)(); //Run periodic thread, every PerThread0_Period ms
+  }
+  if ((Counter % PeriodUserPeriod2) == 0)
+  {
+      (*PeriodUserTask2)(); //Run periodic thread1, every PerThread1_Period ms
+  }
+
+  //implement round robin scheduler, update RunPt
+  RunPt = RunPt->next;  // Round Robin
+
+  /*
   Counter = (Counter+1)%100;
   if ((Counter%PeriodUserPeriod1) == 0)
   {
@@ -192,6 +205,7 @@ void Scheduler(void)
     PeriodUserTask2();
   }
   RunPt = RunPt->next;  // Round Robin
+  */
 }
 
 // ******** OS_InitSemaphore ************
@@ -261,13 +275,13 @@ void OS_MailBox_Send(uint32_t data)
 {
   //***YOU IMPLEMENT THIS FUNCTION*****
   Mail = data;
-  if(Send)
+  if(Send==0)
   {
-    Lost++;
+      OS_Signal(&Send);
   }
   else
   {
-    OS_Signal(&Send);
+      Lost++;
   }
 }
 

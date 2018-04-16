@@ -45,7 +45,6 @@ typedef struct tcb tcbType;
 void OS_Init(void);
 
 
-
 //******** OS_AddThreads ***************
 // Add four main threads to the scheduler
 // Inputs: function pointers to four void/void main threads
@@ -62,8 +61,8 @@ int OS_AddThreads(void(*thread0)(void),
 // Inputs: three pointers to a void/void foreground tasks
 // Outputs: 1 if successful, 0 if this thread can not be added
 int OS_AddThreads3(void(*task0)(void),
-                 void(*task1)(void),
-                 void(*task2)(void));
+                   void(*task1)(void),
+                   void(*task2)(void));
 								 
 //******** OS_AddPeriodicEventThreads ***************
 // Add two background periodic event threads
@@ -75,8 +74,10 @@ int OS_AddThreads3(void(*task0)(void),
 // It is assumed the time to run these event threads is short compared to 1 msec
 // These threads cannot spin, block, loop, sleep, or kill
 // These threads can call OS_Signal
-int OS_AddPeriodicEventThreads(void(*thread1)(void), uint32_t period1,
-  void(*thread2)(void), uint32_t period2);
+int OS_AddPeriodicEventThreads(void(*thread1)(void),
+                               uint32_t period1,
+                               void(*thread2)(void),
+                               uint32_t period2);
 
 //******** OS_Launch ***************
 // Start the scheduler, enable interrupts

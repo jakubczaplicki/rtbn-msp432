@@ -102,7 +102,7 @@ void Task0(void)
   static int32_t soundSum = 0;
   static int time = 0;  // units of microphone sampling rate
   //TExaS_Task0();      // record system time in array, toggle virtual logic analyser
-  //Profile_Toggle0();  // viewed by a real logic analyser to know Task0 started
+  Profile_Toggle0();  // viewed by a real logic analyser to know Task0 started
   sr = StartCritical(); // on MSP432, the ADC input is a critical section
   BSP_Microphone_Input(&SoundData);
   EndCritical(sr);
@@ -449,7 +449,7 @@ void Task5(void){int32_t soundSum;
 /*          End of Task5 Section              */
 /* ****************************************** */
 
-int main_(void)
+int main(void)
 {
   OS_Init();
   Profile_Init();  // initialise the 7 hardware profiling pins
@@ -513,7 +513,7 @@ int main_step2(void)
 //  OS_Init
 //  OS_AddThreads3 (with just 3 threads for now)
 //  OS_Launch
-int main(void){
+int main_step3(void){
   OS_Init();
   Profile_Init();  // initialise the 7 hardware profiling pins
   Task0_Init();    // microphone init

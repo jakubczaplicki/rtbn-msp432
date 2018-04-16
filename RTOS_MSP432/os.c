@@ -44,16 +44,18 @@ tcbType *RunPt;
 int32_t Stacks[NUMTHREADS][STACKSIZE];
 
 // ******** OS_Init ************
-// initialize operating system, disable interrupts until OS_Launch
-// initialize OS controlled I/O: systick, 50 MHz PLL
+// initialise operating system, disable interrupts until OS_Launch
+// initialise OS controlled I/O: systick, 50 MHz PLL
 // input:  none
 // output: none
-void OS_Init(void){
+void OS_Init(void)
+{
   DisableInterrupts();
   BSP_Clock_InitFastest();// set processor clock to fastest speed
 }
 
-void SetInitialStack(int i){
+void SetInitialStack(int i)
+{
   tcbs[i].sp = &Stacks[i][STACKSIZE-16]; // thread stack pointer
   Stacks[i][STACKSIZE-1] = 0x01000000;   // thumb bit
   Stacks[i][STACKSIZE-3] = 0x14141414;   // R14
@@ -78,17 +80,22 @@ void SetInitialStack(int i){
 // Outputs: 1 if successful, 0 if this thread can not be added
 int OS_AddThreads(void(*task0)(void),
                  void(*task1)(void),
-                 void(*task2)(void)){ int32_t status;
+                 void(*task2)(void))
+{
+  int32_t status;
   status = StartCritical();
-  tcbs[0].next = &tcbs[1]; // 0 points to 1
-  tcbs[1].next = &tcbs[2]; // 1 points to 2
-  tcbs[2].next = &tcbs[0]; // 2 points to 0
-  SetInitialStack(0); Stacks[0][STACKSIZE-2] = (int32_t)(task0); // PC
-  SetInitialStack(1); Stacks[1][STACKSIZE-2] = (int32_t)(task1); // PC
-  SetInitialStack(2); Stacks[2][STACKSIZE-2] = (int32_t)(task2); // PC
-  RunPt = &tcbs[0];       // thread 0 will run first
+  tcbs[0].next = &tcbs[1];  // 0 points to 1
+  tcbs[1].next = &tcbs[2];  // 1 points to 2
+  tcbs[2].next = &tcbs[0];  // 2 points to 0
+  SetInitialStack(0);
+  Stacks[0][STACKSIZE-2] = (int32_t)(task0);  // PC
+  SetInitialStack(1);
+  Stacks[1][STACKSIZE-2] = (int32_t)(task1);  // PC
+  SetInitialStack(2);
+  Stacks[2][STACKSIZE-2] = (int32_t)(task2);  // PC
+  RunPt = &tcbs[0];  // thread 0 will run first
   EndCritical(status);
-  return 1;               // successful
+  return 1;  // successful
 }
 
 ///******** OS_Launch ***************
@@ -96,7 +103,8 @@ int OS_AddThreads(void(*task0)(void),
 // Inputs: number of 20ns clock cycles for each time slice
 //         (maximum of 24 bits)
 // Outputs: none (does not return)
-void OS_Launch(uint32_t theTimeSlice){
+void OS_Launch(uint32_t theTimeSlice)
+{
   STCTRL = 0;                  // disable SysTick during setup
   STCURRENT = 0;               // any write to current clears it
   SYSPRI3 =(SYSPRI3&0x00FFFFFF)|0xE0000000; // priority 7

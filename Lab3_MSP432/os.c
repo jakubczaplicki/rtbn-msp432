@@ -15,12 +15,14 @@ void StartOS(void);
 #define NUMTHREADS  6        // maximum number of threads
 #define NUMPERIODIC 2        // maximum number of periodic threads
 #define STACKSIZE   100      // number of 32-bit words in stack per thread
-struct tcb{
+struct tcb
+{
   int32_t *sp;       // pointer to stack (valid for threads not running
   struct tcb *next;  // linked-list pointer
    // nonzero if blocked on this semaphore
    // nonzero if this thread is sleeping
-//*FILL THIS IN****
+  // TODO: *FILL THIS IN****
+
 };
 typedef struct tcb tcbType;
 tcbType tcbs[NUMTHREADS];
@@ -29,20 +31,22 @@ int32_t Stacks[NUMTHREADS][STACKSIZE];
 
 
 // ******** OS_Init ************
-// Initialize operating system, disable interrupts
-// Initialize OS controlled I/O: periodic interrupt, bus clock as fast as possible
-// Initialize OS global variables
+// Initialise operating system, disable interrupts
+// Initialise OS controlled I/O: periodic interrupt, bus clock as fast as possible
+// Initialise OS global variables
 // Inputs:  none
 // Outputs: none
-void OS_Init(void){
+void OS_Init(void)
+{
   DisableInterrupts();
   BSP_Clock_InitFastest();// set processor clock to fastest speed
-// perform any initializations needed, 
-// like setting up periodic timer to run runperiodicevents
+  // perform any initializations needed,
+  // like setting up periodic timer to run runperiodicevents
 
 }
 
-void SetInitialStack(int i){
+void SetInitialStack(int i)
+{
 
   // **Same as Lab 2 and Lab 3****
 }
@@ -57,8 +61,9 @@ int OS_AddThreads(void(*thread0)(void),
                   void(*thread2)(void),
                   void(*thread3)(void),
                   void(*thread4)(void),
-                  void(*thread5)(void)){
-  // **similar to Lab 2. initialize as not blocked, not sleeping****
+                  void(*thread5)(void))
+{
+  // TODO **similar to Lab 2. initialize as not blocked, not sleeping****
 
   return 1;               // successful
 }
@@ -74,15 +79,17 @@ int OS_AddThreads(void(*thread0)(void),
 // These threads cannot spin, block, loop, sleep, or kill
 // These threads can call OS_Signal
 // In Lab 3 this will be called exactly twice
-int OS_AddPeriodicEventThread(void(*thread)(void), uint32_t period){
-// ****IMPLEMENT THIS****
+int OS_AddPeriodicEventThread(void(*thread)(void), uint32_t period)
+{
+  // TODO ****IMPLEMENT THIS****
   return 1;
 
 }
 
-void static runperiodicevents(void){
-// ****IMPLEMENT THIS****
-// **RUN PERIODIC THREADS, DECREMENT SLEEP COUNTERS
+void static runperiodicevents(void)
+{
+  // TODO ****IMPLEMENT THIS****
+  // **RUN PERIODIC THREADS, DECREMENT SLEEP COUNTERS
 
 }
 
@@ -99,9 +106,11 @@ void OS_Launch(uint32_t theTimeSlice){
   STCTRL = 0x00000007;         // enable, core clock and interrupt arm
   StartOS();                   // start on the first task
 }
+
 // runs every ms
-void Scheduler(void){ // every time slice
-// ****IMPLEMENT THIS****
+void Scheduler(void)  // every time slice
+{
+// TODO ****IMPLEMENT THIS****
 // ROUND ROBIN, skip blocked and sleeping threads
 }
 
@@ -110,10 +119,11 @@ void Scheduler(void){ // every time slice
 // Inputs: none
 // Outputs: none
 // Will be run again depending on sleep/block status
-void OS_Suspend(void){
+void OS_Suspend(void)
+{
   STCURRENT = 0;        // any write to current clears it
   INTCTRL = 0x04000000; // trigger SysTick
-// next thread gets a full time slice
+  // next thread gets a full time slice
 }
 
 // ******** OS_Sleep ************
@@ -121,10 +131,11 @@ void OS_Suspend(void){
 // input:  number of msec to sleep
 // output: none
 // OS_Sleep(0) implements cooperative multitasking
-void OS_Sleep(uint32_t sleepTime){
-// ****IMPLEMENT THIS****
-// set sleep parameter in TCB
-// suspend, stops running
+void OS_Sleep(uint32_t sleepTime)
+{
+  // TODO ****IMPLEMENT THIS****
+  // set sleep parameter in TCB
+  // suspend, stops running
 }
 
 // ******** OS_InitSemaphore ************
@@ -132,8 +143,9 @@ void OS_Sleep(uint32_t sleepTime){
 // Inputs:  pointer to a semaphore
 //          initial value of semaphore
 // Outputs: none
-void OS_InitSemaphore(int32_t *semaPt, int32_t value){
-//***IMPLEMENT THIS***
+void OS_InitSemaphore(int32_t *semaPt, int32_t value)
+{
+  // TODO ***IMPLEMENT THIS***
 }
 
 // ******** OS_Wait ************
@@ -142,8 +154,9 @@ void OS_InitSemaphore(int32_t *semaPt, int32_t value){
 // Lab3 block if less than zero
 // Inputs:  pointer to a counting semaphore
 // Outputs: none
-void OS_Wait(int32_t *semaPt){
-//***IMPLEMENT THIS***
+void OS_Wait(int32_t *semaPt)
+{
+  // TODO ***IMPLEMENT THIS***
 }
 
 // ******** OS_Signal ************
@@ -152,8 +165,9 @@ void OS_Wait(int32_t *semaPt){
 // Lab3 wakeup blocked thread if appropriate
 // Inputs:  pointer to a counting semaphore
 // Outputs: none
-void OS_Signal(int32_t *semaPt){
-//***IMPLEMENT THIS***
+void OS_Signal(int32_t *semaPt)
+{
+  // TODO ***IMPLEMENT THIS***
 }
 
 #define FSIZE 10    // can be any size
@@ -164,12 +178,13 @@ int32_t CurrentSize;// 0 means FIFO empty, FSIZE means full
 uint32_t LostData;  // number of lost pieces of data
 
 // ******** OS_FIFO_Init ************
-// Initialize FIFO.  
+// Initialise FIFO.
 // One event thread producer, one main thread consumer
 // Inputs:  none
 // Outputs: none
-void OS_FIFO_Init(void){
-//***IMPLEMENT THIS***
+void OS_FIFO_Init(void)
+{
+  // TODO ***IMPLEMENT THIS***
 }
 
 // ******** OS_FIFO_Put ************
@@ -179,7 +194,7 @@ void OS_FIFO_Init(void){
 // Inputs:  data to be stored
 // Outputs: 0 if successful, -1 if the FIFO is full
 int OS_FIFO_Put(uint32_t data){
-//***IMPLEMENT THIS***
+  // TODO ***IMPLEMENT THIS***
 
   return 0;   // success
 
@@ -191,8 +206,9 @@ int OS_FIFO_Put(uint32_t data){
 // do block if empty
 // Inputs:  none
 // Outputs: data retrieved
-uint32_t OS_FIFO_Get(void){uint32_t data;
-//***IMPLEMENT THIS***
+uint32_t OS_FIFO_Get(void){
+  uint32_t data;
+  // TODO ***IMPLEMENT THIS***
 
   return data;
 }
