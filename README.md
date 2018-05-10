@@ -1,6 +1,8 @@
 # rtbn-msp432
 UTAustinX+UT.RTBN.12.01x+3T2016
 
+![Lab Kit](hardware.jpeg)
+
 Lab code for course UTAustinX: UT.RTBN.12.01x Realtime Bluetooth Networks
 
 Courseware : https://courses.edx.org/courses/course-v1:UTAustinX+UT.6.03x+1T2016/info
