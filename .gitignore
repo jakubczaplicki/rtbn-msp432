@@ -61,3 +61,5 @@ Release/
 # Eclipse
 .metadata
 .jxbrowser-data
+
+.DS_Store

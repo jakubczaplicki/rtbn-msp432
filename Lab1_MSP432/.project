@@ -34,7 +34,7 @@
 	<variableList>
 		<variable>
 			<name>ORIGINAL_PROJECT_ROOT</name>
-			<value>file:/Users/jakubczaplicki/Development/rtbn/MSP432ValvanoWare/Lab1_MSP432</value>
+			<value>file:/Users/jakubczaplicki/workspace_v11/rtbn-msp432/Lab1_MSP432</value>
 		</variable>
 	</variableList>
 </projectDescription>

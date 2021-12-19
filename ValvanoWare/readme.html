@@ -1,0 +1,952 @@
+<h2>MSP432 Software projects <a href= "http://edx-org-utaustinx.s3.amazonaws.com/UT601x/ValvanoWare.zip"><b>Download all</b></a> </h2><p></p>
+<p>These examples accompany these books<br>
+   
+"Embedded Systems: Introduction to the MSP432 Microcontroller",<br>
+ISBN: 978-1512185676, Jonathan Valvano, copyright (c) 2015<br>
+"Embedded Systems: Real-Time Interfacing to the MSP432 Microcontroller",<br>
+ISBN: 978-1514676585, Jonathan Valvano, copyright (c) 2015<br>
+Copyright 2015 by Jonathan W. Valvano, valvano@mail.utexas.edu<br><br>
+    
+
+You may use, edit, run or distribute these files  as long as the above copyright notice remains<br>
+ THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+ OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+ VALVANO SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL,
+ OR CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.<br><br>
+ For more information about my classes, my research, and my books, see
+ <a href="http://users.ece.utexas.edu/~valvano/">http://users.ece.utexas.edu/~valvano/</a><br>
+
+October 14, 2015
+<hr>
+<ul>
+  <li> <a href="#Vol1" target="_self">Examples for Introduction to the MSP432 Microcontroller</a></li>
+  <li> <a href="#Vol2" target="_self">Examples for Real-Time Interfacing to the MSP432 Microcontroller</a></li>
+</ul>
+<hr>
+</p>
+<h2><a name="Vol1"></a>Volume 1 Programs</h2>
+
+<table class="MsoTableGrid" border="1" cellpadding="0" cellspacing="0" >
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Printf_UART_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 2.1</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Virtual COM port through debugger USB.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;InputOutput_MSP432&nbsp;<br> 
+		&nbsp;InputOutput_MSP432asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.1</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Functional abstraction of the switches and LED on the LaunchPad.&nbsp;<br>
+		&nbsp;Switches include internal pull-up resistors.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Switch_MSP432&nbsp;<br> 
+		&nbsp;Switch_MSP432asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.2</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Interface of a positive logic switch on P1.5. <br>
+		&nbsp;Switches include an external pull-down resistor.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;SSR_MSP432&nbsp;<br> 
+		&nbsp;SSR_MSP432asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.3</i>&nbsp;<br> 
+		&nbsp;<i>Example 4.2</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Interface of a positive logic output on P2.2.&nbsp;<br>
+		&nbsp;Uses abstraction to make the software easy to use.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Squarewaves_MSP432&nbsp;<br> 
+		&nbsp;Squarewaves_MSP432asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.4</i>&nbsp;<br> 
+		&nbsp;<i>Example 4.1</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Generate two out of phase square waves on P2.2 and P2.1.&nbsp;<br>
+		&nbsp;Uses abstraction to make the software easy to use.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;GPIO_MSP432&nbsp;<br> 
+		&nbsp;GPIO_MSP432asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.5</i>&nbsp;<br> 
+		&nbsp;<i>Example 4.3</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Generate 5,6,10,9 on Port 4.&nbsp;<br>
+		&nbsp;Uses abstraction to make the software easy to use.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;ClockSystem_MSP432&nbsp;<br> 
+		&nbsp;ClockSystem_MSP432asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.6</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Functions to allow execution at 32kHz or 48 MHz. <br>
+		&nbsp;Trade-off between execution speed and electrical power.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;SysTick_MSP432&nbsp;<br> 
+		&nbsp;SysTick_MSP432asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.7</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Use the <b>SysTick</b> module to wait designated time.&nbsp;<br>
+		&nbsp;Uses busy wait synchronization.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Scanf_UART_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.9</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Virtual COM port through debugger USB.&nbsp;<br>
+		&nbsp;<i>BUG: scanf on CCS looses the first character.</i>&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;ProfileSqrt_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.12</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Measurement of dynamic efficiency.&nbsp;<br>
+		&nbsp;Uses SysTick and an output pin to profile execution speed.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;ProfileFact_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 5.20</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Measurement of dynamic efficiency.&nbsp;<br>
+		&nbsp;Uses SysTick to profile execution speed.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;PointerTrafficLight_MSP432&nbsp;<br> 
+		&nbsp;PointerTrafficLight_MSP432asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 6.8</i>&nbsp;<br> 
+		&nbsp;<i>Example 6.4</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Traffic light system with two sensors and six lights.&nbsp;<br>
+		&nbsp;Moore <b>Finite State Machine</b> with pointers.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;MealyEngineControl_MSP432_MSP432&nbsp;<br> 
+		&nbsp;MealyEngineControl_MSP432asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 6.9</i>&nbsp;<br> 
+		&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Electronic engine controller with one input and two outputs.&nbsp;<br>
+		&nbsp;Mealy <b>Finite State Machine</b> with pointers.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;HeapFixedBlock_MSP432&nbsp;<br> 
+		&nbsp;HeapFixedBlock_MSP432asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Programs 6.10</i>&nbsp;<br> 
+		&nbsp;<i>6.11, 6.12, 6.13</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Functions to allocate and release memory blocks.&nbsp;<br>
+		&nbsp;Fixed size blocks using <b>linked lists</b>.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;LLFifo_MSP432&nbsp;<br> 
+		&nbsp;LLFifo_MSP432asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Programs 6.15</i>&nbsp;<br> 
+		&nbsp;<i>6.16, 6.17</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<b>First in first out queue</b>.&nbsp;<br>
+		&nbsp;Uses linked lists and HeapFixedBlock.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;LinearInterpolation_4C123&nbsp;<br> 
+		&nbsp;LinearInterpolation_4C123asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 6.22</i>&nbsp;<br> 
+		&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Fixed-point <b>sin</b> function.&nbsp;<br>
+		&nbsp;Uses a table and linear interpolation.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;UART_MSP432&nbsp;<br> 
+		&nbsp;UART_MSP432asm&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 8.1</i>&nbsp;<br> 
+		&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Device driver functions that implement <b>serial I/O</b>.&nbsp;<br>
+		&nbsp;Uses busy-wait synchronization.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Nokia5110_MSP432&nbsp;<br> 
+		&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Section 8.4</i>&nbsp;<br> 
+		&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Device driver functions that interface a <b>Nokia 5110 LCD</b>.&nbsp;<br>
+		&nbsp;Uses SPI and busy-wait synchronization.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;EdgeInterrupt_MSP432&nbsp;<br> 
+		&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 9.4</i>&nbsp;<br> 
+		&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<b>Edge triggered interrupt</b> on P1.1 switch.&nbsp;<br>
+		&nbsp;Real-time processing using interrupt synchronization.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;TwoButtonVector_MSP432&nbsp;<br> 
+		&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 9.5</i>&nbsp;<br> 
+		&nbsp;<i>Example 9.1</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<b>Edge triggered interrupt</b> on P5.3 and P6.3 switches.&nbsp;<br>
+		&nbsp;Real-time processing using interrupt synchronization.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;TwoButtonPoll_MSP432&nbsp;<br> 
+		&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 9.6</i>&nbsp;<br> 
+		&nbsp;<i>Example 9.1</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<b>Edge triggered interrupt</b> on P6.2 and P6.3 switches.&nbsp;<br>
+		&nbsp;Real-time processing using interrupt synchronization.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;PeriodicSysTickInts_MSP432&nbsp;<br> 
+		&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 9.7</i>&nbsp;<br> 
+		&nbsp;<i>Section 9.6</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Periodic interrupt using <b>SysTick</b>.&nbsp;<br>
+		&nbsp;Real-time processing using interrupt synchronization.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;PeriodicTimerA0Ints_MSP432&nbsp;<br> 
+		&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 9.8</i>&nbsp;<br> 
+		&nbsp;<i>Section 9.7</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Periodic interrupt using <b>TimerA</b>.&nbsp;<br>
+		&nbsp;Real-time processing using interrupt synchronization.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Profile_MSP432&nbsp;<br> 
+		&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 9.13</i>&nbsp;<br> 
+		&nbsp;<i>Section 9.9</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<b>Profile</b> multi-threaded system.&nbsp;<br>
+		&nbsp;Using both SysTick and TimerA interrupts.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;ADCSWTrigger_MSP432&nbsp;<br> 
+		&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 10.2</i>&nbsp;<br> 
+		&nbsp;<i>Program 10.3</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;14-bit <b>ADC</b> sampling of P4.7.&nbsp;<br>
+		&nbsp;Using software start and busy-wait.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;ADC_Resolution_MSP432&nbsp;<br> 
+		&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Section 10.4.2</i>&nbsp;<br> 
+		&nbsp;<i>Figure 10.13</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Repeated measurement to assess <b>ADC resolution</b>.&nbsp;<br>
+		&nbsp;Using 512-point averaging filter.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;FIFO_MSP432&nbsp;<br> 
+		&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 11.5</i>&nbsp;<br> 
+		&nbsp;<i>Section 11.3</i>&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<b>First in first out</b> queue.&nbsp;<br>
+		&nbsp;Using both pointers and indexed addressing.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;UARTInts_MSP432&nbsp;<br> 
+		&nbsp;&nbsp;<br> 
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 11.6</i>&nbsp;<br> 
+		&nbsp;<br> 	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Device driver functions that implement <b>serial I/O</b>.&nbsp;<br>
+		&nbsp;Uses interrupt synchronization and two FIFO queues.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+</table>
+<p></p>
+<h2><a name="Vol2">Volume 2 Programs</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;PortMapping_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 2.1</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Port mapping is used to map the Timer0A CCR0 function to P2.7.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;InputOutput_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 2.7</i>&nbsp;<br> 
+		&nbsp;<i>Program 2.8</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;A set of functions using P1.4,P1.1 as inputs and P2.2-0 as outputs.&nbsp;<br>
+		&nbsp;A friendly set of functions using P1.4,P1.1 as inputs and P2.2-4 as outputs.&nbsp;<br>
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;SSR_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 2.9</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;A set of functions using P2.3 as an output.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Switch_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 2.10</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;A set of functions that interface an input switch to P1.5.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;ClockSystem_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 2.11</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;A set of functions that set the clock system to the DCO,LFEXT or HFEXT bus clock.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Systick_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 2.12</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Timer functions that implement a time delay.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;GPIO_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 2.13</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;C software for the stepper motor system.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;TableLineTracker_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 3.1</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Table implementation of a Moore FSM.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;PointerLineTracker_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 3.2</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Pointer implementation of a Moore FSM.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;FIFO_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 3.7</i>&nbsp;<br> 
+		&nbsp;<i>Program 3.8</i>&nbsp;<br> 
+		&nbsp;<i>Program 3.9</i>&nbsp;<br> 
+		&nbsp;<i>Program 3.10</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Two-pointer implementation of a FIFO.&nbsp;<br>
+		&nbsp;Implementation of a two-index FIFO. The size must be a power of two.&nbsp;<br> 
+		&nbsp;Two-pointer macro implementation of a FIFO.&nbsp;<br> 
+		&nbsp;Macro implementation of a two-index FIFO. The size must be a power of two.&nbsp;<br>&nbsp; 
+	</td>
+</tr>
+
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;HeapFixedBlock_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 3.11</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Fixed-size memory manager implementing a heap.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;ProfileSqrt_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 3.16</i>&nbsp;<br> 
+		&nbsp;<i>Program 3.17</i>&nbsp;<br> 
+		&nbsp;<i>Program 3.18</i>&nbsp;<br> 
+		&nbsp;<i>Program 3.19</i>&nbsp;<br> 
+		&nbsp;<i>Program 3.20</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Profiling of a sqrt function.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;LCD_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.2</i>&nbsp;<br> 
+		&nbsp;<i>Program 4.3</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;LCD driver based on the HD44780 controller.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Stepper_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.4</i>&nbsp;<br> 
+		&nbsp;<i>Program 4.5</i>&nbsp;<br> 
+		&nbsp;<i>Program 4.6</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Stepper motor driver, double circular linked list .&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;UART_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.10</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Device driver functions that implement serial I/O.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;MatrixKeypad_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 4.11</i>&nbsp;<br> 
+		&nbsp;<i>Program 4.12</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Scanning software for a matrix keyboard.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;EdgeInterrupt_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 5.6</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Edge-triggered interrupts that count falling edges of P1.1 and P1.4.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;TwoButtonVector_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 5.7</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Edge-triggered interrupts with vectored interrupts.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;TwoButtonPoll_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 5.8</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Edge-triggered interrupts with polled interrupts.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;UARTint_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 5.9</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Interrupt-driven device driver for the UART uses two software FIFOs to buffer data.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;PeriodicSysTickInts_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 5.10</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Implementation of a periodic interrupt using SysTick.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;MatrixKeypadPeriodic_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 5.11</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Periodic polling interface of a scanned keyboard.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;InputCapture_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 6.1</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Counting interrupt using input capture.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;PeriodMeasure_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 6.2</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;16-bit period measurement on P7.3.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;PeriodicTimerA0Ints_MSP432&nbsp;<br> 
+		&nbsp;PeriodicTimerA1Ints_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 6.7</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Implementation of a periodic interrupt using TimerA0 and TimerA1.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;TimerA0PWM_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 6.8</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Software to generate a PWM output using Timer A0.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;FreqMeasure_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 6.10</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Software to measure frequency with a resolution of 100 Hz.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;MAX5353_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 7.2</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Functions to initialize and to send data to the DAC using the SSI.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;MAX1246_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 7.3</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Functions to initialize and to receive data from the ADC using the SSI.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;74HC595_MSP432<br> 
+		&nbsp;74HC165_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 7.4</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Software to control an output parallel port expanded using the SSI.&nbsp;<br>&nbsp;
+		&nbsp;Software to control an input parallel port expanded using the SSI.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;I2C_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 7.5</i>&nbsp;<br> 
+		&nbsp;<i>Program 7.6</i>&nbsp;<br> 
+		&nbsp;<i>Program 7.7</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Functions to use I2C.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;PWMSine_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 8.7</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Software for PWM DAC creating a 1 kHz sine wave.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;ADCSWTrigger_MSP432&nbsp;<br> 
+		&nbsp;ADCTA0Trigger_MSP432&nbsp;<br> 
+		&nbsp;ADC_Resolution_MSP432&nbsp;<br> 
+		&nbsp;ADCSWTriggerTwoChan_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 8.8</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Software to sample from the ADC.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;LowPower_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 9.1</i>&nbsp;<br> 
+		&nbsp;<i>Program 9.2</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Software to put the processor into deep sleep (LPM3.5).&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+
+<tr>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;ESP8266_MSP432&nbsp;<br> 
+		&nbsp;	
+	</td>
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;<i>Program 11.1</i>&nbsp;<br> 
+		&nbsp;	
+	</td>	
+	<td style="border-top: 2px solid; border-right: 2px solid; border-left: 2px solid; border-bottom: 2pt solid " valign="top" >
+		&nbsp;Software for PWM DAC creating a 1 kHz sine wave.&nbsp;<br>&nbsp;
+	</td>
+</tr>
+
+</table>
+<hr>
+<p>
+For more information on teaching materials for embedded systems, see <a href="http://users.ece.utexas.edu/~valvano/">Valvano's home page</a>
+</p>

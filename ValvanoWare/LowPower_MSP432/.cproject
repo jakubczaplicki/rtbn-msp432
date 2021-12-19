@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule configRelations="2" moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.ti.ccstudio.buildDefinitions.MSP432.Debug.946226891">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.ti.ccstudio.buildDefinitions.MSP432.Debug.946226891" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings/>
+				<extensions>
+					<extension id="com.ti.ccstudio.errorparser.CoffErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.ti.ccstudio.errorparser.LinkErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.ti.ccstudio.errorparser.AsmErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.ti.ccstudio.binaryparser.CoffParser" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="out" artifactName="${ProjName}" buildProperties="" cleanCommand="${CG_CLEAN_CMD}" description="" id="com.ti.ccstudio.buildDefinitions.MSP432.Debug.946226891" name="Debug" parent="com.ti.ccstudio.buildDefinitions.MSP432.Debug" postbuildStep="" prebuildStep="">
+					<folderInfo id="com.ti.ccstudio.buildDefinitions.MSP432.Debug.946226891." name="/" resourcePath="">
+						<toolChain id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.DebugToolchain.1111169715" name="TI Build Tools" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.DebugToolchain" targetTool="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.linkerDebug.112535461">
+							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.480681317" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
+								<listOptionValue builtIn="false" value="DEVICE_CONFIGURATION_ID=MSP432P401R"/>
+								<listOptionValue builtIn="false" value="DEVICE_ENDIANNESS=little"/>
+								<listOptionValue builtIn="false" value="OUTPUT_FORMAT=ELF"/>
+								<listOptionValue builtIn="false" value="CCS_MBS_VERSION=5.5.0"/>
+								<listOptionValue builtIn="false" value="LINKER_COMMAND_FILE=msp432p401r.cmd"/>
+								<listOptionValue builtIn="false" value="RUNTIME_SUPPORT_LIBRARY=libc.a"/>
+								<listOptionValue builtIn="false" value="OUTPUT_TYPE=executable"/>
+							</option>
+							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.1362782657" name="Compiler version" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="5.2.4" valueType="string"/>
+							<targetPlatform id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.targetPlatformDebug.962277184" name="Platform" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.targetPlatformDebug"/>
+							<builder buildPath="${BuildDirectory}" id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.builderDebug.1604879463" keepEnvironmentInBuildfile="false" name="GNU Make" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.builderDebug"/>
+							<tool id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.compilerDebug.639833871" name="MSP432 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.compilerDebug">
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.GCC.1310508514" name="Enable support for GCC extensions (DEPRECATED) (--gcc)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.GCC" value="true" valueType="boolean"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.SILICON_VERSION.1763536308" name="Target processor version (--silicon_version, -mv)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.SILICON_VERSION" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.SILICON_VERSION.7M4" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.CODE_STATE.1059857300" name="Designate code state, 16-bit (thumb) or 32-bit (--code_state)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.CODE_STATE" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.CODE_STATE.16" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.ABI.817382615" name="Application binary interface. [See 'General' page to edit] (--abi)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.ABI" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.ABI.eabi" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.FLOAT_SUPPORT.1658346065" name="Specify floating point support (--float_support)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.FLOAT_SUPPORT" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.FLOAT_SUPPORT.FPv4SPD16" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DEFINE.826741289" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DEFINE" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__MSP432P401R__"/>
+									<listOptionValue builtIn="false" value="TARGET_IS_MSP432P4XX"/>
+									<listOptionValue builtIn="false" value="ccs"/>
+								</option>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.INCLUDE_PATH.628796663" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.INCLUDE_PATH" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${CCS_BASE_ROOT}/arm/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${CCS_BASE_ROOT}/arm/include/CMSIS&quot;"/>
+								</option>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DEBUGGING_MODEL.642628296" name="Debugging model" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DEBUGGING_MODEL" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DEBUGGING_MODEL.SYMDEBUG__DWARF" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.ADVICE__POWER.1775450326" name="Enable checking of ULP power rules (--advice:power)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.ADVICE__POWER" value="all" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DIAG_WARNING.470642681" name="Treat diagnostic &lt;id&gt; as warning (--diag_warning, -pdsw)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DIAG_WARNING" valueType="stringList">
+									<listOptionValue builtIn="false" value="225"/>
+								</option>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DISPLAY_ERROR_NUMBER.457759877" name="Emit diagnostic identifier numbers (--display_error_number, -pden)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DIAG_WRAP.930402391" name="Wrap diagnostic messages (--diag_wrap)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DIAG_WRAP.off" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.LITTLE_ENDIAN.1120283367" name="Little endian code [See 'General' page to edit] (--little_endian, -me)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.LITTLE_ENDIAN" value="true" valueType="boolean"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__C_SRCS.909272661" name="C Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__C_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__CPP_SRCS.362304952" name="C++ Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__CPP_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__ASM_SRCS.1957905464" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__ASM_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__ASM2_SRCS.775418778" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__ASM2_SRCS"/>
+							</tool>
+							<tool id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.linkerDebug.112535461" name="MSP432 Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.linkerDebug">
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.MAP_FILE.1396686875" name="Link information (map) listed into &lt;file&gt; (--map_file, -m)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.MAP_FILE" value="&quot;${ProjName}.map&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.STACK_SIZE.2007617703" name="Set C system stack size (--stack_size, -stack)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.STACK_SIZE" value="512" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.HEAP_SIZE.547901402" name="Heap size for C/C++ dynamic memory allocation (--heap_size, -heap)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.HEAP_SIZE" value="1024" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.OUTPUT_FILE.1949061167" name="Specify output file name (--output_file, -o)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.OUTPUT_FILE" value="&quot;${ProjName}.out&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.XML_LINK_INFO.1144314030" name="Detailed link information data-base into &lt;file&gt; (--xml_link_info, -xml_link_info)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.XML_LINK_INFO" value="&quot;${ProjName}_linkInfo.xml&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.DISPLAY_ERROR_NUMBER.1924659794" name="Emit diagnostic identifier numbers (--display_error_number)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.DIAG_WRAP.286132177" name="Wrap diagnostic messages (--diag_wrap)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.DIAG_WRAP.off" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.SEARCH_PATH.1565695360" name="Add &lt;dir&gt; to library search path (--search_path, -i)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.SEARCH_PATH" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${CCS_BASE_ROOT}/arm/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
+								</option>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.LIBRARY.474769029" name="Include library file or command file as input (--library, -l)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.LIBRARY" valueType="libs">
+									<listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
+								</option>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exeLinker.inputType__CMD_SRCS.532904110" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exeLinker.inputType__CMD_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exeLinker.inputType__CMD2_SRCS.299533662" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exeLinker.inputType__CMD2_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exeLinker.inputType__GEN_CMDS.899505145" name="Generated Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exeLinker.inputType__GEN_CMDS"/>
+							</tool>
+							<tool id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.hex.1004547476" name="MSP432 Hex Utility" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.hex"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.ti.ccstudio.buildDefinitions.MSP432.Release.183370791">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.ti.ccstudio.buildDefinitions.MSP432.Release.183370791" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="com.ti.ccstudio.errorparser.CoffErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.ti.ccstudio.errorparser.LinkErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.ti.ccstudio.errorparser.AsmErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.ti.ccstudio.binaryparser.CoffParser" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="out" artifactName="${ProjName}" buildProperties="" cleanCommand="${CG_CLEAN_CMD}" description="" id="com.ti.ccstudio.buildDefinitions.MSP432.Release.183370791" name="Release" parent="com.ti.ccstudio.buildDefinitions.MSP432.Release" postbuildStep="" prebuildStep="">
+					<folderInfo id="com.ti.ccstudio.buildDefinitions.MSP432.Release.183370791." name="/" resourcePath="">
+						<toolChain id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.ReleaseToolchain.1231123843" name="TI Build Tools" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.ReleaseToolchain" targetTool="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.linkerRelease.1830192015">
+							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.1128278640" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
+								<listOptionValue builtIn="false" value="DEVICE_CONFIGURATION_ID=MSP432P401R"/>
+								<listOptionValue builtIn="false" value="DEVICE_ENDIANNESS=little"/>
+								<listOptionValue builtIn="false" value="OUTPUT_FORMAT=ELF"/>
+								<listOptionValue builtIn="false" value="CCS_MBS_VERSION=5.5.0"/>
+								<listOptionValue builtIn="false" value="LINKER_COMMAND_FILE=msp432p401r.cmd"/>
+								<listOptionValue builtIn="false" value="RUNTIME_SUPPORT_LIBRARY=libc.a"/>
+								<listOptionValue builtIn="false" value="OUTPUT_TYPE=executable"/>
+							</option>
+							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.683546360" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="5.2.4" valueType="string"/>
+							<targetPlatform id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.targetPlatformRelease.1418778444" name="Platform" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.targetPlatformRelease"/>
+							<builder buildPath="${BuildDirectory}" id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.builderRelease.1432961672" name="GNU Make.Release" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.builderRelease"/>
+							<tool id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.compilerRelease.1202889268" name="MSP432 Compiler" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.compilerRelease">
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.GCC.1938734527" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.GCC" value="true" valueType="boolean"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.SILICON_VERSION.399821708" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.SILICON_VERSION" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.SILICON_VERSION.7M4" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.CODE_STATE.1572419188" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.CODE_STATE" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.CODE_STATE.16" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.ABI.1928988860" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.ABI" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.ABI.eabi" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.FLOAT_SUPPORT.10822215" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.FLOAT_SUPPORT" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.FLOAT_SUPPORT.FPv4SPD16" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DEFINE.757561934" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DEFINE" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__MSP432P401R__"/>
+									<listOptionValue builtIn="false" value="TARGET_IS_MSP432P4XX"/>
+									<listOptionValue builtIn="false" value="ccs"/>
+								</option>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.INCLUDE_PATH.1876806874" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.INCLUDE_PATH" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${CCS_BASE_ROOT}/arm/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${CCS_BASE_ROOT}/arm/include/CMSIS&quot;"/>
+								</option>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.ADVICE__POWER.879229261" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.ADVICE__POWER" value="all" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DIAG_WARNING.704235809" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DIAG_WARNING" valueType="stringList">
+									<listOptionValue builtIn="false" value="225"/>
+								</option>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DISPLAY_ERROR_NUMBER.2092437954" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DIAG_WRAP.698708057" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.DIAG_WRAP.off" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.LITTLE_ENDIAN.654946464" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compilerID.LITTLE_ENDIAN" value="true" valueType="boolean"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__C_SRCS.527434180" name="C Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__C_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__CPP_SRCS.990526926" name="C++ Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__CPP_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__ASM_SRCS.1040890984" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__ASM_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__ASM2_SRCS.1495822317" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.compiler.inputType__ASM2_SRCS"/>
+							</tool>
+							<tool id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.linkerRelease.1830192015" name="MSP432 Linker" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exe.linkerRelease">
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.MAP_FILE.464638221" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.MAP_FILE" value="&quot;${ProjName}.map&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.STACK_SIZE.1143147419" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.STACK_SIZE" value="512" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.HEAP_SIZE.1131553676" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.HEAP_SIZE" value="1024" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.OUTPUT_FILE.1103513774" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.OUTPUT_FILE" value="&quot;${ProjName}.out&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.XML_LINK_INFO.1425221391" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.XML_LINK_INFO" value="&quot;${ProjName}_linkInfo.xml&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.DISPLAY_ERROR_NUMBER.436247316" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.DIAG_WRAP.1159152203" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.DIAG_WRAP.off" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.SEARCH_PATH.681900055" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.SEARCH_PATH" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${CCS_BASE_ROOT}/arm/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
+								</option>
+								<option id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.LIBRARY.1260750064" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.linkerID.LIBRARY" valueType="libs">
+									<listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
+								</option>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exeLinker.inputType__CMD_SRCS.1712695474" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exeLinker.inputType__CMD_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exeLinker.inputType__CMD2_SRCS.1794449396" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exeLinker.inputType__CMD2_SRCS"/>
+								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exeLinker.inputType__GEN_CMDS.2060718283" name="Generated Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.exeLinker.inputType__GEN_CMDS"/>
+							</tool>
+							<tool id="com.ti.ccstudio.buildDefinitions.MSP432_5.2.hex.742796015" name="MSP432 Hex Utility" superClass="com.ti.ccstudio.buildDefinitions.MSP432_5.2.hex"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="LowPower_MSP432.com.ti.ccstudio.buildDefinitions.MSP432.ProjectType.541159727" name="MSP432" projectType="com.ti.ccstudio.buildDefinitions.MSP432.ProjectType"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration"/>
+	<storageModule moduleId="org.eclipse.cdt.core.language.mapping">
+		<project-mappings>
+			<content-type-mapping configuration="" content-type="org.eclipse.cdt.core.asmSource" language="com.ti.ccstudio.core.TIASMLanguage"/>
+			<content-type-mapping configuration="" content-type="org.eclipse.cdt.core.cHeader" language="com.ti.ccstudio.core.TIGCCLanguage"/>
+			<content-type-mapping configuration="" content-type="org.eclipse.cdt.core.cSource" language="com.ti.ccstudio.core.TIGCCLanguage"/>
+			<content-type-mapping configuration="" content-type="org.eclipse.cdt.core.cxxHeader" language="com.ti.ccstudio.core.TIGPPLanguage"/>
+			<content-type-mapping configuration="" content-type="org.eclipse.cdt.core.cxxSource" language="com.ti.ccstudio.core.TIGPPLanguage"/>
+		</project-mappings>
+	</storageModule>
+</cproject>

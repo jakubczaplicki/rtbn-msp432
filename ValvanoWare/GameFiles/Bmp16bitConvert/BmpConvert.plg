@@ -1,0 +1,41 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: BmpConvert - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Valvano\LOCALS~1\Temp\RSP533.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/BmpConvert.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\cpp\MyProjects\Bmp16bitConvert\BmpConvert.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Valvano\LOCALS~1\Temp\RSP533.tmp" 
+Creating temporary file "C:\DOCUME~1\Valvano\LOCALS~1\Temp\RSP534.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/BmpConvert.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\cpp\MyProjects\Bmp16bitConvert\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Valvano\LOCALS~1\Temp\RSP534.tmp" 
+Creating temporary file "C:\DOCUME~1\Valvano\LOCALS~1\Temp\RSP535.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/BmpConvert16.pdb" /debug /machine:I386 /out:"Debug/BmpConvert16.exe" /pdbtype:sept 
+.\Debug\BmpConvert.obj
+.\Debug\StdAfx.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\Valvano\LOCALS~1\Temp\RSP535.tmp"
+<h3>Output Window</h3>
+Compiling...
+StdAfx.cpp
+Compiling...
+BmpConvert.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+BmpConvert16.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

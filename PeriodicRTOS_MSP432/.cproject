@@ -16,7 +16,7 @@
 				<configuration artifactExtension="out" artifactName="${ProjName}" buildProperties="" cleanCommand="${CG_CLEAN_CMD}" description="" id="com.ti.ccstudio.buildDefinitions.MSP432.Debug.1952779607" name="Debug" parent="com.ti.ccstudio.buildDefinitions.MSP432.Debug" postbuildStep="" prebuildStep="">
 					<folderInfo id="com.ti.ccstudio.buildDefinitions.MSP432.Debug.1952779607." name="/" resourcePath="">
 						<toolChain id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.exe.DebugToolchain.1337181877" name="TI Build Tools" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.exe.DebugToolchain" targetTool="com.ti.ccstudio.buildDefinitions.MSP432_15.12.exe.linkerDebug.1997032703">
-							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.1998069022" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
+							<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.1998069022" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
 								<listOptionValue builtIn="false" value="DEVICE_CONFIGURATION_ID=MSP432P401R"/>
 								<listOptionValue builtIn="false" value="DEVICE_ENDIANNESS=little"/>
 								<listOptionValue builtIn="false" value="OUTPUT_FORMAT=ELF"/>
@@ -34,19 +34,19 @@
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.CODE_STATE.1551556432" name="Designate code state, 16-bit (thumb) or 32-bit (--code_state)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.CODE_STATE" value="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.CODE_STATE.16" valueType="enumerated"/>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.ABI.351973422" name="Application binary interface. (--abi)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.ABI" value="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.ABI.eabi" valueType="enumerated"/>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.FLOAT_SUPPORT.329012495" name="Specify floating point support (--float_support)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.FLOAT_SUPPORT" value="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.FLOAT_SUPPORT.FPv4SPD16" valueType="enumerated"/>
-								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DEFINE.215774182" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DEFINE" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DEFINE.215774182" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DEFINE" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__MSP432P401R__"/>
 									<listOptionValue builtIn="false" value="TARGET_IS_MSP432P4XX"/>
 									<listOptionValue builtIn="false" value="ccs"/>
 								</option>
-								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.INCLUDE_PATH.2082454993" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.INCLUDE_PATH" valueType="includePath">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.INCLUDE_PATH.2082454993" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.INCLUDE_PATH" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${CCS_BASE_ROOT}/arm/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${CCS_BASE_ROOT}/arm/include/CMSIS&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DEBUGGING_MODEL.809856899" name="Debugging model" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DEBUGGING_MODEL" value="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DEBUGGING_MODEL.SYMDEBUG__DWARF" valueType="enumerated"/>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.ADVICE__POWER.1685399473" name="Enable checking of ULP power rules (--advice:power)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.ADVICE__POWER" value="all" valueType="string"/>
-								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DIAG_WARNING.1947566797" name="Treat diagnostic &lt;id&gt; as warning (--diag_warning, -pdsw)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DIAG_WARNING" valueType="stringList">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DIAG_WARNING.1947566797" name="Treat diagnostic &lt;id&gt; as warning (--diag_warning, -pdsw)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DIAG_WARNING" valueType="stringList">
 									<listOptionValue builtIn="false" value="225"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DISPLAY_ERROR_NUMBER.309721759" name="Emit diagnostic identifier numbers (--display_error_number, -pden)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
@@ -66,12 +66,12 @@
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.XML_LINK_INFO.106388833" name="Detailed link information data-base into &lt;file&gt; (--xml_link_info, -xml_link_info)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.XML_LINK_INFO" value="&quot;${ProjName}_linkInfo.xml&quot;" valueType="string"/>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.DISPLAY_ERROR_NUMBER.766416340" name="Emit diagnostic identifier numbers (--display_error_number)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.DIAG_WRAP.1220564443" name="Wrap diagnostic messages (--diag_wrap)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.DIAG_WRAP.off" valueType="enumerated"/>
-								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.SEARCH_PATH.1851998943" name="Add &lt;dir&gt; to library search path (--search_path, -i)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.SEARCH_PATH" valueType="libPaths">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.SEARCH_PATH.1851998943" name="Add &lt;dir&gt; to library search path (--search_path, -i)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.SEARCH_PATH" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${CCS_BASE_ROOT}/arm/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 								</option>
-								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.LIBRARY.189255009" name="Include library file or command file as input (--library, -l)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.LIBRARY" valueType="libs">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.LIBRARY.189255009" name="Include library file or command file as input (--library, -l)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.LIBRARY" valueType="libs">
 									<listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
 								</option>
 								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.exeLinker.inputType__CMD_SRCS.1589164115" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.exeLinker.inputType__CMD_SRCS"/>
@@ -106,7 +106,7 @@
 				<configuration artifactExtension="out" artifactName="${ProjName}" buildProperties="" cleanCommand="${CG_CLEAN_CMD}" description="" id="com.ti.ccstudio.buildDefinitions.MSP432.Release.865151528" name="Release" parent="com.ti.ccstudio.buildDefinitions.MSP432.Release" postbuildStep="" prebuildStep="">
 					<folderInfo id="com.ti.ccstudio.buildDefinitions.MSP432.Release.865151528." name="/" resourcePath="">
 						<toolChain id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.exe.ReleaseToolchain.630127712" name="TI Build Tools" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.exe.ReleaseToolchain" targetTool="com.ti.ccstudio.buildDefinitions.MSP432_15.12.exe.linkerRelease.493309037">
-							<option id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.460247612" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
+							<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS.460247612" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_TAGS" valueType="stringList">
 								<listOptionValue builtIn="false" value="DEVICE_CONFIGURATION_ID=MSP432P401R"/>
 								<listOptionValue builtIn="false" value="DEVICE_ENDIANNESS=little"/>
 								<listOptionValue builtIn="false" value="OUTPUT_FORMAT=ELF"/>
@@ -124,18 +124,18 @@
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.CODE_STATE.2122096576" name="Designate code state, 16-bit (thumb) or 32-bit (--code_state)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.CODE_STATE" value="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.CODE_STATE.16" valueType="enumerated"/>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.ABI.650668565" name="Application binary interface. (--abi)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.ABI" value="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.ABI.eabi" valueType="enumerated"/>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.FLOAT_SUPPORT.1497703649" name="Specify floating point support (--float_support)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.FLOAT_SUPPORT" value="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.FLOAT_SUPPORT.FPv4SPD16" valueType="enumerated"/>
-								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DEFINE.2058482626" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DEFINE" valueType="definedSymbols">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DEFINE.2058482626" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DEFINE" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__MSP432P401R__"/>
 									<listOptionValue builtIn="false" value="TARGET_IS_MSP432P4XX"/>
 									<listOptionValue builtIn="false" value="ccs"/>
 								</option>
-								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.INCLUDE_PATH.1272861506" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.INCLUDE_PATH" valueType="includePath">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.INCLUDE_PATH.1272861506" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.INCLUDE_PATH" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${CCS_BASE_ROOT}/arm/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${CCS_BASE_ROOT}/arm/include/CMSIS&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.ADVICE__POWER.1372610020" name="Enable checking of ULP power rules (--advice:power)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.ADVICE__POWER" value="all" valueType="string"/>
-								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DIAG_WARNING.33907293" name="Treat diagnostic &lt;id&gt; as warning (--diag_warning, -pdsw)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DIAG_WARNING" valueType="stringList">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DIAG_WARNING.33907293" name="Treat diagnostic &lt;id&gt; as warning (--diag_warning, -pdsw)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DIAG_WARNING" valueType="stringList">
 									<listOptionValue builtIn="false" value="225"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DISPLAY_ERROR_NUMBER.1243124641" name="Emit diagnostic identifier numbers (--display_error_number, -pden)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.compilerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
@@ -154,12 +154,12 @@
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.XML_LINK_INFO.1618079300" name="Detailed link information data-base into &lt;file&gt; (--xml_link_info, -xml_link_info)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.XML_LINK_INFO" value="&quot;${ProjName}_linkInfo.xml&quot;" valueType="string"/>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.DISPLAY_ERROR_NUMBER.544022473" name="Emit diagnostic identifier numbers (--display_error_number)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
 								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.DIAG_WRAP.768408619" name="Wrap diagnostic messages (--diag_wrap)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.DIAG_WRAP.off" valueType="enumerated"/>
-								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.SEARCH_PATH.1545848579" name="Add &lt;dir&gt; to library search path (--search_path, -i)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.SEARCH_PATH" valueType="libPaths">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.SEARCH_PATH.1545848579" name="Add &lt;dir&gt; to library search path (--search_path, -i)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.SEARCH_PATH" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${CCS_BASE_ROOT}/arm/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
 								</option>
-								<option id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.LIBRARY.356042130" name="Include library file or command file as input (--library, -l)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.LIBRARY" valueType="libs">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.LIBRARY.356042130" name="Include library file or command file as input (--library, -l)" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.linkerID.LIBRARY" valueType="libs">
 									<listOptionValue builtIn="false" value="&quot;libc.a&quot;"/>
 								</option>
 								<inputType id="com.ti.ccstudio.buildDefinitions.MSP432_15.12.exeLinker.inputType__CMD_SRCS.1048513941" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.MSP432_15.12.exeLinker.inputType__CMD_SRCS"/>
